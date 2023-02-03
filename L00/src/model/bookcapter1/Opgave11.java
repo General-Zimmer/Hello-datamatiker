@@ -12,13 +12,15 @@ public class Opgave11 {
         double deathYear = yearSeconds/death;
         double immiYear = yearSeconds/immigrant;
 
-        double newyear ;
+        double newyear;
         double oldyear = currentPop+birthYear+immiYear-deathYear;
-        System.out.println("Year 1: "+oldyear);
+        System.out.print("Year 1: ");
+        System.out.printf("%,.0f\n", oldyear);
 
         for (int i = 0; i < 5; i++) {
             newyear = oldyear+birthYear+immiYear-deathYear;
-            System.out.println("Year "+ (i+2) +": "+newyear);
+            System.out.print("Year "+ (i+2) +": ");
+            System.out.printf("%,.0f\n", newyear);
             oldyear = newyear;
         }
 
