@@ -42,10 +42,10 @@ public class Opgave3Udvidelse {
         int lotLength = Integer.toString(lottery).length();
         int guessLength = Integer.toString(guess).length();
         for (int x = 0; x < lotLength; x++) {
-            int lotteryDigit = (lottery/(int)Math.pow(10, x))% 10;
+            int lotteryDigit = (lottery/(int)Math.pow(10, x)) % 10;
 
             for (int y = 0; y < guessLength; y++) {
-                int guessDigit = (guess/(int)Math.pow(10, y))% 10;
+                int guessDigit = (guess/(int)Math.pow(10, y)) % 10;
                 if (lotteryDigit == guessDigit) return true;
             }
 
