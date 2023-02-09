@@ -8,8 +8,8 @@ public class Opgave3Udvidelse {
         System.out.println("Take a guess");
         int guess = scanner.nextInt();
 
-        //int lottery = (int) (Math.random()*100) * (int) (Math.random()*100);
-        int lottery = 689;
+        int lottery = (int) (Math.random()*100) * (int) (Math.random()*100);
+        //int lottery = 689;
         System.out.println(lottery);
 
         int reverse = 0;
