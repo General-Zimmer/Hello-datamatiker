@@ -23,7 +23,7 @@ public class Stars_4 {
             if (rowCount/2 == whenStar)
                 isFirstHalf = false;
 
-            // Places stars in the middle, and + and minus whenStar. Gets reversed halfway
+            // Places stars in the middle, and + and - whenStar on each side. Gets reversed halfway
             for (int i = 1; i <= rowCount; i++) {
                 //           Checks left side                    Checks right side
                 if (i <= (rowCount / 2 + 1) + whenStar && i >= (rowCount / 2 + 1) - whenStar)
