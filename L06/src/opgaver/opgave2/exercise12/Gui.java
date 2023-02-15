@@ -32,7 +32,7 @@ public class Gui extends Application {
 	private void drawShapes(GraphicsContext gc) {
 
 
-		drawTriangleWithInnerWithInner(gc, 20, 150, 80);
+		drawTriangleWithInnerWithInner(gc, 20, 150, 81);
 
 	}
 
