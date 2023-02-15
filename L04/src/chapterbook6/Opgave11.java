@@ -8,6 +8,7 @@ public class Opgave11 {
     }
 
     public static double calcCommission(int salesAmount) {
+        // Skulle nok rigtig lave dette nemmere at skallere
         double commission = 0;
         if (salesAmount <= 5000)
             commission = 0.06*salesAmount;
