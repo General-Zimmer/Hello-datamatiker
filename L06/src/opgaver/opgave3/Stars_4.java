@@ -12,9 +12,11 @@ public class Stars_4 {
             return;
         }
 
+        // Variable setup
         int whenStar = 0;
         boolean isFirstHalf = true;
 
+        // Actual content
         for (int row = 1; row <= rowCount; row++) {
             // print row number
             System.out.printf("%2d: ", row);
