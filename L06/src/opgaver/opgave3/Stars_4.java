@@ -2,7 +2,7 @@ package opgaver.opgave3;
 
 public class Stars_4 {
     public static void main(String[] args) {
-        exA(99);
+        exA(11);
     }
 
     public static void exA(int rowCount) {
@@ -13,7 +13,7 @@ public class Stars_4 {
         }
 
         // Variable setup
-        int whenStar = 0;
+        int whenStar = 0; // When make a star?
         boolean isFirstHalf = true;
 
         // Actual content
@@ -25,7 +25,7 @@ public class Stars_4 {
             if (rowCount/2 == whenStar)
                 isFirstHalf = false;
 
-            // Places stars in the middle, and + and - whenStar on each side. Gets reversed halfway
+            // Places stars in the middle, and +/- whenStar on each side. Gets reversed halfway
             for (int i = 1; i <= rowCount; i++) {
                 //           Checks left side                    Checks right side
                 if (i >= (rowCount / 2 + 1) - whenStar && i <= (rowCount / 2 + 1) + whenStar )
