@@ -13,7 +13,7 @@ public class Stars_4 {
         }
 
         // Variable setup
-        int whenStar = 0; // When make a star?
+        int whenStar = 0; // When to place a star?
         boolean isFirstHalf = true;
 
         // Actual content
@@ -27,7 +27,7 @@ public class Stars_4 {
 
             // Places stars in the middle, and +/- whenStar on each side. Gets reversed halfway
             for (int i = 1; i <= rowCount; i++) {
-                //           Checks left side                    Checks right side
+                //        Checks left side                      Checks right side
                 if (i >= (rowCount / 2 + 1) - whenStar && i <= (rowCount / 2 + 1) + whenStar )
                     System.out.print("*");
                 else

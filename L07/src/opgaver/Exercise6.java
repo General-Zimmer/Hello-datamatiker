@@ -6,13 +6,19 @@ import java.util.Arrays;
 public class Exercise6 {
     public static void main(String[] args) {
 
+        // switchLastAndFirst
         System.out.println(Arrays.toString(switchLastAndFirst(new int[]{1, 6, 3, 9})));
+        // fuckEvenNumbers
         System.out.println(Arrays.toString(fuckEvenNumbers(new int[]{7, 5, 4, 2, 5, 9, 10})));
+        // SecondHighestNumber
         System.out.println(SecondHighestNumber(new int[]{99, 3, 7, 2}));
+        // isAscending
         System.out.println("Is the array ascending: " + isAscending(new int[]{99, 3, 7, 2}));
         System.out.println("Is the array ascending: " + isAscending(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9}));
         System.out.println("Is the array ascending: " + isAscending(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 8}));
+        // shiftNumbers
         System.out.println(Arrays.toString(shiftNumbers(new int[]{1, 4, 9, 16, 25})));
+        // hasDoublets
         System.out.println(hasDoublets(new int[]{1, 6, 4, 3, 7}));
         System.out.println(hasDoublets(new int[]{7, 3, 6, 4, 3, 7}));
 
