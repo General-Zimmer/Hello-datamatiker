@@ -9,10 +9,17 @@ public class Exercise3 {
     }
 
     public static int[] sumArrays(int[] a, int[] b) {
-        int[] sum = new int[a.length];
+        int length = Math.max(a.length, b.length);
+        int[] sum = new int[length];
 
-        for (int i = 0; i < a.length; i++)
-            sum[i] += a[i]+b[i];
+
+        for (int i = 0; i < length; i++) {
+            if (i < a.length)
+                sum[i] += a[i];
+            if (i < b.length)
+                sum[i] += b[i];
+        }
+
 
         return sum;
     }
