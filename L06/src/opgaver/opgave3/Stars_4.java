@@ -12,6 +12,7 @@ public class Stars_4 {
             return;
         }
 
+
         // Variable setup
         int whenStar = 0; // When to place a star?
         boolean isFirstHalf = true;
@@ -43,6 +44,7 @@ public class Stars_4 {
             // Next line since row should be done
             System.out.println();
         }
+
 
     }
 }
