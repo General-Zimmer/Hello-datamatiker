@@ -16,37 +16,17 @@ public class Craps {
 
     }
 
-    public static boolean rollForPoint(Scanner scanner, int point) {
-
-
-        for (String answer = scanner.nextLine(); !answer.equals("no"); answer = scanner.nextLine()) {
-            int roll = sumDice(rollDice());
-
-            if (roll == point)
-                return true;
-            else if (roll == 7)
-                return false;
-            System.out.println("You rolled " + roll);
-
-            System.out.println("roll again? ('no' stops)");
-        }
-        return false;
-    }
-
-    public static boolean playCraps(Scanner scanner) {
+    public static void playCraps(Scanner scanner) {
         int[] faces = rollDice();
         int point = sumDice(faces);
 
 
         switch (firstRoll(point)) {
-            case 0 -> {
-                System.out.println("You rolled " + point + ". You won!");
-                return true;
-            }
-            case 1 -> {
-                System.out.println("You rolled " + point + ". So you lost :c");
-                return true;
-            }
+            // win
+            case 0 -> System.out.println("You rolled " + point + ". You won!");
+            // loss
+            case 1 -> System.out.println("You rolled " + point + ". So you lost :c");
+            // Tiebreaker
             case 2 -> {
                 System.out.println("You rolled " + point + ". Roll it again and you win, roll 7 and you lose");
                 System.out.println("roll again? ('no' stops)");
@@ -57,15 +37,39 @@ public class Craps {
 
             }
         }
-        return false;
 
+
+    }
+
+    public static boolean rollForPoint(Scanner scanner, int point) {
+
+
+        for (String answer = scanner.nextLine(); !answer.equals("no"); answer = scanner.nextLine()) {
+            int roll = sumDice(rollDice());
+
+            // Win
+            if (roll == point)
+                return true;
+            // Loss
+            else if (roll == 7)
+                return false;
+
+            // Reroll
+            System.out.println("You rolled " + roll);
+
+            System.out.println("roll again? ('no' stops)");
+        }
+        return false;
     }
 
     private static int firstRoll(int sum) {
 
         return switch (sum) {
+            // win
             case 11, 7 -> 0;
+            // loss
             case 2, 3, 12 -> 1;
+            // Tiebreaker
             default -> 2;
         };
 
