@@ -2,11 +2,11 @@ package projekter.crapsgame;
 
 import java.util.Scanner;
 
-enum Outcome {
-    win, loss, tieBreaker;
-}
-public class ZimmerCraps {
 
+public class ZimmerCraps {
+    enum Outcome {
+        win, loss, tieBreaker
+    }
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
@@ -36,12 +36,9 @@ public class ZimmerCraps {
 
             }
         }
-
-
     }
 
     public static boolean rollForPoint(Scanner scanner, int point) {
-
 
         for (String answer = scanner.nextLine(); !answer.equals("no"); answer = scanner.nextLine()) {
             int roll = sumDice(rollDice());
@@ -64,11 +61,8 @@ public class ZimmerCraps {
     private static Outcome firstRoll(int sum) {
 
         return switch (sum) {
-            // win
             case 11, 7 -> Outcome.win;
-            // loss
             case 2, 3, 12 -> Outcome.loss;
-            // Tiebreaker
             default -> Outcome.tieBreaker;
         };
 
@@ -83,9 +77,8 @@ public class ZimmerCraps {
     }
     private static int sumDice(int[] dice) {
         int sum = 0;
-        for (int die : dice) {
+        for (int die : dice)
             sum += die;
-        }
         return sum;
     }
 }

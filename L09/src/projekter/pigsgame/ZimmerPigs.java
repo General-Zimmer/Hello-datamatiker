@@ -2,7 +2,7 @@ package projekter.pigsgame;
 
 import java.util.Scanner;
 
-public class Pigs {
+public class ZimmerPigs {
     public static void main(String[] args) {
         printRules();
 
@@ -44,7 +44,6 @@ public class Pigs {
             for (int i = 0; i < playerPoints.length; i++) {
                 System.out.println("Player " + (i+1) + " has " + playerPoints[i] + "/" + PointsToWin + " points" );
             }
-
             System.out.println();
 
         }
