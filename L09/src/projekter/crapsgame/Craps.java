@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 enum Outcome {
     win, loss, tieBreaker;
-
 }
 public class Craps {
 
@@ -15,8 +14,6 @@ public class Craps {
         String answer = scanner.nextLine();
         if (!answer.equals("no"))
             playCraps(scanner);
-
-
 
     }
 

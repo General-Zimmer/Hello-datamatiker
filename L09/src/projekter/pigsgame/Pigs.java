@@ -17,17 +17,17 @@ public class Pigs {
 
         while (true) {
 
-            // God ide at flytte dem her ind i en metode og lave en array med player classes som holder styr på alt.
+            // God ide vil være at flytte dem her ind i en metode og lave en array med player classes som holder styr på alt.
             System.out.println("Player 1 plays");
             playerPoints[0] += playRound();
-            if (hasPlayerWon(playerPoints[0], PointsToWin)) {
+            if (playerPoints[0] >= PointsToWin) {
                 System.out.println("Player 1 wins!");
                 return;
             }
 
             System.out.println("Player 2 plays");
             playerPoints[1] += playRound();
-            if (hasPlayerWon(playerPoints[1], PointsToWin)) {
+            if (playerPoints[1] >= PointsToWin) {
                 System.out.println("Player 2 wins!");
                 return;
             }
@@ -69,16 +69,6 @@ public class Pigs {
         return points;
 
     }
-
-    public static boolean hasPlayerWon(int playerPoints, int PointsToWin) {
-        boolean hasPlayerWon = false;
-        if (playerPoints >= PointsToWin) {
-            hasPlayerWon = true;
-        }
-        return hasPlayerWon;
-    }
-
-
 
     private static int rollDie() {
         return (int) (Math.random() * 6 + 1);
