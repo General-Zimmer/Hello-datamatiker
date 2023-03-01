@@ -2,7 +2,7 @@ package projekter.pigsgame;
 
 import java.util.Scanner;
 
-public class Pigs {
+public class PigsUdvidelse {
     public static void main(String[] args) {
 
         playPig();
@@ -17,7 +17,7 @@ public class Pigs {
 
         while (true) {
 
-            // God ide at flytte dem her ind i en metode og lave en array med player classes som holder styr på alt.
+            // God ide at flytte dem her ind i egen metode og lave en array med player classes som holder styr på alt.
             System.out.println("Player 1 plays");
             playerPoints[0] += playRound();
             if (hasPlayerWon(playerPoints[0], PointsToWin)) {
@@ -73,7 +73,7 @@ public class Pigs {
     public static boolean hasPlayerWon(int playerPoints, int PointsToWin) {
         boolean hasPlayerWon = false;
         if (playerPoints >= PointsToWin) {
-            hasPlayerWon = true;
+            return true;
         }
         return hasPlayerWon;
     }
