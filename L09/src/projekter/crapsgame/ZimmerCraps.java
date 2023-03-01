@@ -5,7 +5,7 @@ import java.util.Scanner;
 enum Outcome {
     win, loss, tieBreaker;
 }
-public class Craps {
+public class ZimmerCraps {
 
     public static void main(String[] args) {
 

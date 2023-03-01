@@ -13,9 +13,8 @@ public class Opgave5 {
 
         for (Map.Entry<String, Integer> entry : salg.entrySet()) {
             System.out.printf(entry.getKey() + "%" + (11-entry.getKey().length()) + "s", " ");
-            for (int j = 0; j < entry.getValue(); j++) {
+            for (int j = 0; j < entry.getValue(); j++)
                 System.out.print("*");
-            }
             System.out.println();
         }
     }

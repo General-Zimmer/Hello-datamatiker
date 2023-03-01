@@ -4,8 +4,17 @@ import java.util.Scanner;
 
 public class Pigs {
     public static void main(String[] args) {
+        printRules();
 
         playPig();
+
+    }
+    public static void printRules() {
+        System.out.println("Players take turns with a die.");
+        System.out.println("On a player's turn they can roll a die as many times as they like.");
+        System.out.println("If a roll is a 2, 3, 4, 5, or 6, the player adds that many points to their score for the turn.");
+        System.out.println("A player may choose to end their turn at any time and “bank” their points.");
+        System.out.println("If a player rolls a 1, they lose all their unbanked points and their turn is over.");
 
     }
 
