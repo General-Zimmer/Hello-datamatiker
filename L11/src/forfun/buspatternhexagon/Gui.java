@@ -27,7 +27,7 @@ public class Gui extends Application {
 
         // polygon things
         double size = 60;
-        double offset = -size*0.1;
+        double offset = -size*0.12;
         double circleReduction = size*0.1;
         double minsize = 5;
         double amount = 0;
@@ -37,17 +37,20 @@ public class Gui extends Application {
         @SuppressWarnings("UnnecessaryLocalVariable")
         double starty = y;
 
+        // Make sure a minimum size is reached
         do amount++;
-        while ((size-(circleReduction*amount) >= minsize));
+        while (size-circleReduction*amount >= minsize);
+
+
 
         for (int i = 0; i < 100; i++) {
             double tempX = startx+(size*2+offset)*i;
 
             for (int j = 0; j < amount; j++)
                 pane.getChildren().add(hexagon(
-                        tempX + (size * j),
-                        starty - ((size+offset)*1.75) * j,
-                        size - (circleReduction * j)));
+                        tempX + (size+offset/2) * j,
+                        starty - (size+offset)*1.75 * j,
+                        size - circleReduction * j));
         }
     }
 
