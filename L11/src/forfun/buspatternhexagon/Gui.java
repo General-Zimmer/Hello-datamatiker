@@ -24,12 +24,16 @@ public class Gui extends Application {
         double size = 30;
         double startx = -200;
         double starty = 635;
+        double offset = 2;
         double circleReduction = 3;
 
         for (int i = 0; i < 17; i++) {
-            double tempX = startx+(size*2)*i;
-            for (int j = 0; j < 9; j++)
-                pane.getChildren().add(myPolygon(tempX + (size * j), starty - ((size)*1.75) * j, size - (circleReduction * j)));
+            double tempX = startx+(size*2+offset)*i;
+
+            for (int j = 0; j < 9; j++) {
+                pane.getChildren().add(myPolygon(tempX + (size * j), starty - ((size+offset)*1.75) * j, size - (circleReduction * j)));
+
+            }
         }
 
 
