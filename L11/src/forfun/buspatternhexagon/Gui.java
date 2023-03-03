@@ -49,11 +49,6 @@ public class Gui extends Application {
                         starty - ((size+offset)*1.75) * j,
                         size - (circleReduction * j)));
         }
-
-
-
-
-
     }
 
     private Polygon hexagon(double startx, double starty, double radius) {
