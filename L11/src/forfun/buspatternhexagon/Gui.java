@@ -11,29 +11,43 @@ public class Gui extends Application {
 
     @Override
     public void start(Stage stage) {
+        double x = 1200;
+        double y = 1000;
+
         Pane pane = new Pane();
-        this.initContent(pane);
-        Scene scene = new Scene(pane, 800, 650);
+        this.initContent(pane, x, y);
+        Scene scene = new Scene(pane, x, y);
 
         stage.setTitle("Shapes");
         stage.setScene(scene);
         stage.show();
     }
 
-    private void initContent(Pane pane) {
-        double size = 30;
-        double startx = -200;
-        double starty = 635;
-        double offset = 2;
-        double circleReduction = 3;
+    private void initContent(Pane pane, double x, double y) {
 
-        for (int i = 0; i < 17; i++) {
+        // polygon things
+        double size = 60;
+        double offset = -size*0.1;
+        double circleReduction = size*0.1;
+        double minsize = 5;
+        double amount = 0;
+
+        // Start
+        double startx = -x-200;
+        @SuppressWarnings("UnnecessaryLocalVariable")
+        double starty = y;
+
+        do amount++;
+        while ((size-(circleReduction*amount) >= minsize));
+
+        for (int i = 0; i < 100; i++) {
             double tempX = startx+(size*2+offset)*i;
 
-            for (int j = 0; j < 9; j++) {
-                pane.getChildren().add(myPolygon(tempX + (size * j), starty - ((size+offset)*1.75) * j, size - (circleReduction * j)));
-
-            }
+            for (int j = 0; j < amount; j++)
+                pane.getChildren().add(hexagon(
+                        tempX + (size * j),
+                        starty - ((size+offset)*1.75) * j,
+                        size - (circleReduction * j)));
         }
 
 
@@ -42,9 +56,9 @@ public class Gui extends Application {
 
     }
 
-    private Polygon myPolygon(double startx, double starty, double radius) {
+    private Polygon hexagon(double startx, double starty, double radius) {
 
-        double degree = Math.PI / 180 * 30;
+        double degree = Math.PI / 180.0 * 30.0;
         double sin = Math.sin(degree) * radius;
         double cos = Math.cos(degree) * radius;
 

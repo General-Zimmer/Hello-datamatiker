@@ -7,7 +7,7 @@ import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 
 
-public class Gui extends Application {
+public class hexagon extends Application {
 
     @Override
     public void start(Stage stage) {
