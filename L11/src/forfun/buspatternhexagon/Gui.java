@@ -70,6 +70,7 @@ public class Gui extends Application {
         );
         poly.rotateProperty().set(30);
 
+
         return poly;
     }
 
