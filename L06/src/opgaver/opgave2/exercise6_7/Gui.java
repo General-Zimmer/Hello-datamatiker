@@ -14,6 +14,7 @@ public class Gui extends Application {
 		GridPane root = this.initContent();
 		Scene scene = new Scene(root);
 
+
 		stage.setTitle("Loops");
 		stage.setScene(scene);
 		stage.show();
