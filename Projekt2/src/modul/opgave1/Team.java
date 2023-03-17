@@ -35,8 +35,9 @@ public class Team {
             if (isStudentRemoved && i != students.length-1) {
                 students[i] = students[i+1];
             }
-            else if (students[i] != null && i == students.length-1 && !students[i].getName().equalsIgnoreCase(name)) {
+            else if (students[i] != null && i == students.length-1 && students[i].getName().equalsIgnoreCase(name)) {
                 students[i] = null;
+                isStudentRemoved = true;
             }
             else if (students[i] != null && this.students[i].getName().equalsIgnoreCase(name)) {
                 students[i] = students[i+1];
@@ -44,6 +45,7 @@ public class Team {
             }
 
         }
+        if (isStudentRemoved)
             studentAmount--;
     }
 
