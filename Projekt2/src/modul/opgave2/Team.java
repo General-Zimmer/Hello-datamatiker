@@ -4,25 +4,31 @@ import java.util.Arrays;
 
 public class Team {
 
-    private String name;
-    private String room;
+    private final String name;
+    private final String room;
     private int studentAmount;
-    private Student[] students;
+    private final Student[] students;
 
+    private static final Student.answers[] correctAnswers = new Student.answers[10];
     public Team(String name, String room) {
         this.name = name;
         this.room = room;
         this.studentAmount = 0;
         this.students = new Student[32];
+
+        Arrays.fill(correctAnswers, Student.answers.a);
     }
 
-    public void addStudent(Student student) {
+    public Student[] gethighScoreStudents(double minAverage) {
+        Student[] highStudents = new Student[studentAmount];
 
+        for (int i = 0; i < studentAmount; i++) {
+            Student student = students[i];
 
-        students[studentAmount] = student;
-
-        studentAmount++;
-
+            if (student.isActive() && student.getAverage() >= minAverage)
+                highStudents[i] = student;
+        }
+        return highStudents;
     }
 
     public void removeStudent(String name) {
@@ -49,6 +55,54 @@ public class Team {
             studentAmount--;
     }
 
+    public double getTeamAverage() {
+
+        double[] studentGrades = new double[studentAmount];
+        for (int i = 0; i < studentAmount; i++)
+            studentGrades[i] = students[i].getAverage();
+
+
+        return Util.getAverage(studentGrades);
+    }
+
+    public int[] correctAnswersCount() {
+
+        int[] correctAnswersCount = new int[10];
+
+        for (int i = 0; i < studentAmount; i++) {
+            Student student = students[i];
+            Student.answers[] answers = student.getMultipleChoiceAnswers();
+
+            for (int j = 0; j < correctAnswersCount.length; j++) {
+                if (answers[j] == correctAnswers[j])
+                    correctAnswersCount[j]++;
+            }
+        }
+        return correctAnswersCount;
+    }
+
+    public void addStudent(Student student) {
+
+        students[studentAmount] = student;
+        studentAmount++;
+    }
+
+    public String[] teamInfo() {
+        String[] stringStudents = new String[studentAmount+1];
+
+        stringStudents[0] = "     Navn           Genm. kara.  rigtige svar på multiple choice";
+
+
+        for (int i = 1; i < studentAmount+1; i++) {
+            Student.answers[] answers = students[i-1].getMultipleChoiceAnswers();
+
+            int correctAnswersCount = Util.getcorrectAnswers(answers, correctAnswers);
+
+            stringStudents[i] = students[i-1].toString() + String.format("%-2s", correctAnswersCount);
+        }
+
+        return stringStudents;
+    }
 
     @Override
     public String toString() {
@@ -60,35 +114,5 @@ public class Team {
                 '}';
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getRoom() {
-        return room;
-    }
-
-    public void setRoom(String room) {
-        this.room = room;
-    }
-
-    public Student[] getStudents() {
-        return students;
-    }
-
-    public void setStudents(Student[] students) {
-        this.students = students;
-    }
-
-    public int getStudentAmount() {
-        return studentAmount;
-    }
-
-    public void setStudentAmount(int studentAmount) {
-        this.studentAmount = studentAmount;
-    }
 }
