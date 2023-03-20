@@ -112,7 +112,8 @@ public class Team {
             int correctAnswersCount = Util.getcorrectAnswers(answers, correctAnswers);
 
             if (studentName.equalsIgnoreCase(students[i-1].getName()))
-                return students[i-1].toString() + String.format("%-2s", correctAnswersCount);
+                return "     Navn           Genm. kara.  rigtige svar på multiple choice\n" +
+                        students[i-1].toString() + String.format("%-2s", correctAnswersCount);
         }
 
         return "Student does not exist";
