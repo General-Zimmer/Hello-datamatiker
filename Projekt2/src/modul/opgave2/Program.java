@@ -45,12 +45,12 @@ public class Program {
         System.out.println();
 
         // Highscore Method test
-        System.out.println("all Highscore students");
+        System.out.println("Team 1 highscores");
         for (Student student : team1.gethighScoreStudents(100)) {
             if (student != null)
                 System.out.println(student.getName());
         }
-
+        System.out.println("Team 2 highscores");
         for (Student student : team2.gethighScoreStudents(100)) {
             if (student != null)
                 System.out.println(student.getName());
@@ -58,6 +58,7 @@ public class Program {
 
         System.out.println();
 
+        // Multiple choice questions test
         int[] team1CorrectAnswers = team1.correctAnswersCount();
         System.out.println("Team 1");
         for (int i = 0; i < team1CorrectAnswers.length; i++)

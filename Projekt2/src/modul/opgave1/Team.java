@@ -1,7 +1,7 @@
 package modul.opgave1;
 
 import java.util.Arrays;
-
+@SuppressWarnings("all")
 public class Team {
 
     private String name;
@@ -60,35 +60,5 @@ public class Team {
                 '}';
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getRoom() {
-        return room;
-    }
-
-    public void setRoom(String room) {
-        this.room = room;
-    }
-
-    public Student[] getStudents() {
-        return students;
-    }
-
-    public void setStudents(Student[] students) {
-        this.students = students;
-    }
-
-    public int getStudentAmount() {
-        return studentAmount;
-    }
-
-    public void setStudentAmount(int studentAmount) {
-        this.studentAmount = studentAmount;
-    }
 }

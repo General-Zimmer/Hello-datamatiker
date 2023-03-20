@@ -1,4 +1,4 @@
-package modul.opgave2;
+package modul.opgave3;
 
 public class Student {
     private final String name;
@@ -48,7 +48,7 @@ public class Student {
     @Override
     public String toString() {
         String space = "  :  ";
-        return String.format("%-20s", name) + space + String.format("%-6s", getAverage()) + space ;
+        return String.format("%-20s", name) + space + String.format("%-6s", getAverage()) + space;
     }
 
     public String getName() {

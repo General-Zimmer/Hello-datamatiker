@@ -3,6 +3,7 @@ package modul.opgave1;
 
 import java.util.Arrays;
 
+@SuppressWarnings("all")
 public class TeamAlternative {
 
     private String name;
