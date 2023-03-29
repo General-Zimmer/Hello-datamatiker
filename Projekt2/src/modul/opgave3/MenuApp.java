@@ -7,23 +7,25 @@ import java.util.Scanner;
 public class MenuApp {
     private static final Scanner scan = new Scanner(System.in);
 
+    // I used ArrayList in the start. Classmates' lack of using it convinced me otherwise
+    private static final Team[] teams = new Team[10];
+    private static int teamAmount = 0;
 
     public static void main(String[] args) {
 
-        Team team1 = new Team("Team over 9000", "earth");
-        
+        // For testing purposes without JUnit tests
+        Team team = new Team("Team over 9000", "earth");
         Student dinMads = new Student("Mads åermand", true, new double[]{0, 0, 1000, 5});
         Student minMads = new Student("Mads byerskand", true, new double[]{421, 4});
         Student notSoProudPanda = new Student("Panda of Braveness", true, new double[]{9001, 9001, 9001});
+        team.addStudent(dinMads);
+        team.addStudent(minMads);
+        team.addStudent(notSoProudPanda);
+        addTeam(team);
 
-        team1.addStudent(dinMads);
-        team1.addStudent(minMads);
-        team1.addStudent(notSoProudPanda);
-        
-        List<Team> teams = new ArrayList<>();
 
         
-        teams.add(team1);
+
         int input = 0;
         while (input != 6) {
 
@@ -41,11 +43,11 @@ public class MenuApp {
             scan.nextLine();
 
             switch (input) {
-                case 1 -> createTeam(teams);
-                case 2 -> CreateStudent(teams);
-                case 3 -> showStudentInfo(teams);
-                case 4 -> showTeamInfo(teams);
-                case 5 -> showAllTeamInfo(teams);
+                case 1 -> createTeam();
+                case 2 -> CreateStudent();
+                case 3 -> showStudentInfo();
+                case 4 -> showTeamInfo();
+                case 5 -> showAllTeamInfo();
             }
 
             System.out.println();
@@ -55,7 +57,7 @@ public class MenuApp {
 
     }
 
-    public static void createTeam(List<Team> teams) {
+    public static void createTeam() {
 
         System.out.println("Name of team");
         String name = scan.nextLine();
@@ -63,10 +65,10 @@ public class MenuApp {
         System.out.println("Room of team");
         String room = scan.nextLine();
 
-        teams.add(new Team(name, room));
+        addTeam(new Team(name, room));
     }
 
-    public static void CreateStudent(List<Team> teams) {
+    public static void CreateStudent() {
         System.out.println("Which team should the student be added to?");
         String teamName = scan.nextLine();
         System.out.println("Gib student name");
@@ -91,7 +93,7 @@ public class MenuApp {
 
     }
 
-    public static void showStudentInfo(List<Team> teams) {
+    public static void showStudentInfo() {
 
         System.out.println("Which team is the student on?");
         String teamName = scan.nextLine();
@@ -110,7 +112,7 @@ public class MenuApp {
 
     }
 
-    public static void showTeamInfo(List<Team> teams) {
+    public static void showTeamInfo() {
         System.out.println("Which team?");
         String teamName = scan.nextLine();
         Team team = Util.getTeam(teams, teamName);
@@ -124,14 +126,26 @@ public class MenuApp {
             System.out.println(studentInfo);
     }
 
-    public static void showAllTeamInfo(List<Team> teams) {
+    public static void showAllTeamInfo() {
 
         for (Team team : teams) {
+            if (team == null) continue;
+
             System.out.println("Team: " + team.getName());
             for (String studentInfo : team.teamInfo())
                 if (studentInfo != null)
                     System.out.println(studentInfo);
         }
+    }
+
+    private static void addTeam(Team team) {
+        if (teamAmount > 32) {
+            System.out.println("Can't create more teams");
+            return;
+        }
+
+        teams[teamAmount] = team;
+        teamAmount++;
     }
 
 }

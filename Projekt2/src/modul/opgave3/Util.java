@@ -26,11 +26,11 @@ public class Util {
         return correctAnswersCount;
     }
 
-    public static Team getTeam(List<Team> teams, String teamName) {
-        for (Team tempTeam : teams) {
+    public static Team getTeam(Team[] teams, String teamName) {
+        for (Team team : teams) {
 
-            if (tempTeam != null && teamName.equalsIgnoreCase(tempTeam.getName()))
-                return tempTeam;
+            if (team != null && teamName.equalsIgnoreCase(team.getName()))
+                return team;
 
         }
         return null;

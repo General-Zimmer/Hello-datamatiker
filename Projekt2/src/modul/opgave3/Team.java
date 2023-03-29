@@ -83,6 +83,11 @@ public class Team {
 
     public void addStudent(Student student) {
 
+        if (studentAmount > 32) {
+            System.out.println("Team " + this.getName() +  " already full");
+            return;
+        }
+
         students[studentAmount] = student;
         studentAmount++;
     }
