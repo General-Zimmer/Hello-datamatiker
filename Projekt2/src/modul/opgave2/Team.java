@@ -55,6 +55,7 @@ public class Team {
             studentAmount--;
     }
 
+    //todo Average of all grades, not all students
     public double getTeamAverage() {
 
         double[] studentGrades = new double[studentAmount];

@@ -12,7 +12,7 @@ public class Program {
         Student notSoProudPanda = new Student("Panda of Braveness", true, new double[]{9001, 9001, 9001});
         Student morsAndreas = new Student("Andreas Lomberjack", true, new double[]{5});
         Student koKurt = new Student("Kurt Tykkster", true, new double[]{999, 999, 999, 999});
-        Student proudpanda = new Student("Panda of Proudness", true, new double[]{9001, 9001, 9001});
+        Student proudPanda = new Student("Panda of Proudness", true, new double[]{9001, 9001, 9001});
 
 
         // Add test
@@ -21,7 +21,7 @@ public class Program {
         team1.addStudent(notSoProudPanda);
         team2.addStudent(morsAndreas);
         team2.addStudent(koKurt);
-        team2.addStudent(proudpanda);
+        team2.addStudent(proudPanda);
 
         // Highest grade test
         System.out.println(dinMads.getName() + " has a highest grade of " + dinMads.getHighestGrade());
@@ -69,7 +69,7 @@ public class Program {
             System.out.println("Question " + (i+1) + " correct answers: " + team2CorrectAnswers[i]);
 
         // Remove test
-        team2.removeStudent(proudpanda.getName());
+        team2.removeStudent(proudPanda.getName());
         team1.removeStudent(dinMads.getName());
 
 
