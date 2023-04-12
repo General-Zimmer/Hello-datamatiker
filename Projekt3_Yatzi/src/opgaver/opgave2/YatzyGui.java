@@ -1,4 +1,4 @@
-package opgaver.example.gui;
+package opgaver.opgave2;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -9,7 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import opgaver.example.model.YatzyDice;
+import opgaver.opgave1.YatzyDice;
 
 import java.util.ArrayList;
 
@@ -64,9 +64,25 @@ public class YatzyGui extends Application {
         dicePane.setStyle("-fx-border-color: black");
 
         // add txfValues, chbHolds
-        // TODO
+        double widgetSize = 80;
+        for (int i = 0; i < txfValues.length; i++) {
+            // TextFields
+            txfValues[i] = new TextField();
+            TextField txfRef = txfValues[i];
+            txfRef.setPrefSize(widgetSize, widgetSize);
+
+            // Hold buttons
+            cbxHolds[i] = new CheckBox();
+            CheckBox cbref = cbxHolds[i];
+            cbref.setPadding(new Insets(0, 0, 0, widgetSize/5));
+            cbref.setText("hold");
+
+            dicePane.add(cbref, i, 1);
+            dicePane.add(txfRef, i, 0);
+        }
         // add lblThrowCount and btnThrow
         // TODO
+
 
         // ---------------------------------------------------------------------
 

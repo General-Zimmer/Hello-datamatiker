@@ -154,13 +154,10 @@ public class YatzyDice {
 
         if (highestPairPoints == 0) return 0;
 
-
         for (int i = 1; i < data.length; i++) {
             int frequency = data[i];
-            if ((i*2 < highestPairPoints && frequency >= 2) && lowestPairPointos < i*2) {
+            if ((i*2 < highestPairPoints && frequency >= 2) && lowestPairPointos < i*2)
                 lowestPairPointos = i*2;
-            }
-
         }
 
         if (lowestPairPointos == 0)
