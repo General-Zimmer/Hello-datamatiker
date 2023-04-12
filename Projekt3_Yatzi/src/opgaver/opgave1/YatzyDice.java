@@ -137,10 +137,12 @@ public class YatzyDice {
 
         if (highestPairPoints == 0) return 0;
 
-        for (int i = 1; i < data.length; i++) {
+        for (int i = data.length-1; i > 1; i--) {
             int frequency = data[i];
-            if ((i*2 < highestPairPoints && frequency >= 2))
-                return i*2 + highestPairPoints;
+            int maybeHighestPoints = i*2;
+
+            if (maybeHighestPoints < highestPairPoints && frequency >= 2)
+                return maybeHighestPoints + highestPairPoints;
         }
 
         return 0;
