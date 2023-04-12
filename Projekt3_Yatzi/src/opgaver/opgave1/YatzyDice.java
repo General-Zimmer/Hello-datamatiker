@@ -1,6 +1,5 @@
 package opgaver.opgave1;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class YatzyDice {
@@ -86,7 +85,6 @@ public class YatzyDice {
     // Index 0 is not used.
     // Note: This method can be used in several of the following methods.
     private int[] frequency() {
-
         int[] frequency = new int[7];
 
         for (int value : values)
@@ -102,7 +100,6 @@ public class YatzyDice {
      * Pre: 1 <= value <= 6;
      */
     public int sameValuePoints(int checkValue) {
-
         int amount = 0;
 
         for (int value : values)
@@ -118,26 +115,14 @@ public class YatzyDice {
      * Return 0, if there aren't 2 dice with the same face value.
      */
     public int onePairPoints() {
-
         int[] frequencies = frequency();
-        ArrayList<Integer> pairs = new ArrayList<>();
 
         // Find pairs
-        for (int i = 1; i < frequencies.length; i++)
+        for (int i = frequencies.length-1; i > 1; i--)
             if (frequencies[i] >= 2)
-                pairs.add(i);
+                return i*2;
 
-        // Check which pair is the biggest
-        int biggest = Integer.MIN_VALUE;
-        for (int value : pairs)
-            if (value > biggest)
-                biggest = value;
-
-        // Return something
-        if (pairs.isEmpty())
-            return 0;
-        else
-            return biggest*2;
+        return 0;
     }
 
     /**
@@ -147,23 +132,18 @@ public class YatzyDice {
      * and 2 other dice with the same but different face value.
      */
     public int twoPairPoints() {
-
         int[] data = frequency();
         int highestPairPoints = onePairPoints();
-        int lowestPairPointos = 0;
 
         if (highestPairPoints == 0) return 0;
 
         for (int i = 1; i < data.length; i++) {
             int frequency = data[i];
-            if ((i*2 < highestPairPoints && frequency >= 2) && lowestPairPointos < i*2)
-                lowestPairPointos = i*2;
+            if ((i*2 < highestPairPoints && frequency >= 2))
+                return i*2 + highestPairPoints;
         }
 
-        if (lowestPairPointos == 0)
-            return 0;
-        else
-            return highestPairPoints + lowestPairPointos;
+        return 0;
     }
 
     /**
@@ -172,6 +152,7 @@ public class YatzyDice {
      */
     public int threeSamePoints() {
         int[] frequencies = frequency();
+
         for (int i = 1; i < frequencies.length; i++)
             if (frequencies[i] >= 3)
                 return i*3;
@@ -185,6 +166,7 @@ public class YatzyDice {
      */
     public int fourSamePoints() {
         int[] frequencies = frequency();
+
         for (int i = 1; i < frequencies.length; i++)
             if (frequencies[i] >= 4)
                 return i*4;
@@ -198,9 +180,9 @@ public class YatzyDice {
      * and 2 other dice with the same but different face value.
      */
     public int fullHousePoints() {
-
         int temp = 0;
         int[] frequencies = frequency();
+
         for (int i = 1; i < frequencies.length; i++) {
 
             if (temp != 0 && 5-frequencies[temp] == frequencies[i])
@@ -218,9 +200,7 @@ public class YatzyDice {
      * Return 0, if the dice aren't showing 1,2,3,4,5.
      */
     public int smallStraightPoints() {
-
         int[] frequencies = frequency();
-
         int sum = 0;
 
         for (int i = 1; i <= 5; i++) {
@@ -239,7 +219,6 @@ public class YatzyDice {
      */
     public int largeStraightPoints() {
         int[] frequencies = frequency();
-
         int sum = 0;
 
         for (int i = 2; i <= 6; i++) {
@@ -256,7 +235,6 @@ public class YatzyDice {
      * Return points for chance (the sum of face values).
      */
     public int chancePoints() {
-
         int sum = 0;
 
         for (int value : values)
