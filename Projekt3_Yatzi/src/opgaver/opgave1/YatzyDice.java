@@ -187,9 +187,9 @@ public class YatzyDice {
 
         for (int i = 1; i < frequencies.length; i++) {
 
-            // Finds 2nd condition by subtracting total frequencies by frequencies in the current temp number
+            // Finds 2nd condition by subtracting total dies by frequencies in the current temp number
             // to find the remaining frequencies
-            if (temp != 0 && frequencies.length-frequencies[temp] == frequencies[i])
+            if (temp != 0 && 5-frequencies[temp] == frequencies[i])
                 // calculate the scores by multiplying their dice count with frequency
                 return frequencies[i] * i + frequencies[temp] * temp;
 

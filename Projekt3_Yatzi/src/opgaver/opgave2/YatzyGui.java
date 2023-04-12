@@ -97,6 +97,22 @@ public class YatzyGui extends Application {
 
         // add labels for results
         // add txfResults,
+        for (int i = 0, j = 0; i < 15; i++, j++) {
+
+
+
+
+            txfResults.add(i, new TextField());
+            TextField txRef = txfResults.get(i);
+            txRef.setPrefWidth(width);
+
+            // Add sum, bonus, and total thingies in this
+            if (i == 6) {
+                j++;
+            }
+
+            scorePane.add(txRef, 0, j);
+        }
         // TODO
         // add labels and text fields for sums, bonus and total.
         // TODO
