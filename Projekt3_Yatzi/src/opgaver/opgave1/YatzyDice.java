@@ -187,13 +187,18 @@ public class YatzyDice {
 
         for (int i = 1; i < frequencies.length; i++) {
 
-            if (temp != 0 && 5-frequencies[temp] == frequencies[i])
+            // Finds 2nd condition by subtracting total frequencies by frequencies in the current temp number
+            // to find the remaining frequencies
+            if (temp != 0 && frequencies.length-frequencies[temp] == frequencies[i])
+                // calculate the scores by multiplying their dice count with frequency
                 return frequencies[i] * i + frequencies[temp] * temp;
 
+            // Finds first condition
             if (frequencies[i] == 3 || frequencies[i] == 2)
                 temp = i;
         }
 
+        // in case full house isn't found
         return 0;
     }
 
@@ -209,6 +214,7 @@ public class YatzyDice {
             if (frequencies[i] == 1)
                 sum += i;
         }
+
         if (sum == 15)
             return sum;
         else
