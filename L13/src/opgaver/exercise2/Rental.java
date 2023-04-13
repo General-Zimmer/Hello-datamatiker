@@ -1,6 +1,7 @@
 package opgaver.exercise2;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public class Rental {
     private int number;
@@ -13,7 +14,7 @@ public class Rental {
         this.days = days;
         this.price = price;
         this.startDate = startDate;
-
+        new Date();
     }
 
     public double getPricePrDay() {
