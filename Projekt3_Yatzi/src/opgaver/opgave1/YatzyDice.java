@@ -100,14 +100,7 @@ public class YatzyDice {
      * Pre: 1 <= value <= 6;
      */
     public int sameValuePoints(int checkValue) {
-        int amount = 0;
-
-        for (int value : values)
-            if (value == checkValue)
-                amount++;
-
-
-        return amount*checkValue;
+        return frequency()[checkValue]*checkValue;
     }
 
     /**
@@ -229,6 +222,7 @@ public class YatzyDice {
         int[] frequencies = frequency();
         int sum = 0;
 
+
         for (int i = 2; i <= 6; i++) {
             if (frequencies[i] == 1)
                 sum += i;
@@ -257,13 +251,11 @@ public class YatzyDice {
      * Return 0, if there aren't 5 dice with the same face value.
      */
     public int yatzyPoints() {
-
         int[] frequencies = frequency();
 
-        for (int i = 1; i < frequencies.length; i++) {
+        for (int i = 1; i < frequencies.length; i++)
             if (frequencies[i] == 5)
                 return 50;
-        }
 
         return 0;
     }

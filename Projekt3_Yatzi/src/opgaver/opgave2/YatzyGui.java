@@ -73,11 +73,12 @@ public class YatzyGui extends Application {
 
             // Hold buttons
             cbxHolds[i] = new CheckBox();
-            CheckBox cbref = cbxHolds[i];
-            cbref.setPadding(new Insets(0, 0, 0, widgetSize/5));
-            cbref.setText("hold");
+            CheckBox cbRef = cbxHolds[i];
+            cbRef.setPadding(new Insets(0, 0, 0, widgetSize/5));
+            cbRef.setText("hold");
 
-            dicePane.add(cbref, i, 1);
+            // Placing widgets
+            dicePane.add(cbRef, i, 1);
             dicePane.add(txfRef, i, 0);
         }
         // add lblThrowCount and btnThrow
@@ -106,14 +107,13 @@ public class YatzyGui extends Application {
             TextField txRef = txfResults.get(i);
             txRef.setPrefWidth(width);
 
-            // Add sum, bonus, and total thingies in this
+            //todo Add sum, bonus, and total thingies in this
             if (i == 6) {
                 j++;
             }
 
             scorePane.add(txRef, 0, j);
         }
-        // TODO
         // add labels and text fields for sums, bonus and total.
         // TODO
 
