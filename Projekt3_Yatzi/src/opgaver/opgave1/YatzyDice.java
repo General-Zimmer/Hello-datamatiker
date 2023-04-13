@@ -58,7 +58,7 @@ public class YatzyDice {
         for (int i = 0; i < holdStatus.length; i++) {
             if (holdStatus[i]) continue;
 
-            values[i] = random.nextInt(7);
+            values[i] = random.nextInt(1, 7);
 
         }
 
