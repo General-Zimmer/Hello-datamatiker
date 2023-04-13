@@ -81,8 +81,13 @@ public class YatzyGui extends Application {
             dicePane.add(cbRef, i, 1);
             dicePane.add(txfRef, i, 0);
         }
-        // add lblThrowCount and btnThrow
-        // TODO
+        // lblThrowCount
+        dicePane.add(lblThrowCount, 2, 2);
+        lblThrowCount.setText("thrown " + dice.getThrowCount());
+
+        // and btnThrow
+        dicePane.add(btnThrow, 3, 2);
+        btnThrow.setOnAction(actionEvent -> actionThrow());
 
 
         // ---------------------------------------------------------------------
@@ -108,27 +113,44 @@ public class YatzyGui extends Application {
             txRef.setPrefWidth(width);
 
             //todo Add sum, bonus, and total thingies in this
-            if (i == 6) {
+            if (i == 6)
                 j++;
-            }
 
             scorePane.add(txRef, 0, j);
         }
-        // add labels and text fields for sums, bonus and total.
-        // TODO
+
+        // labels and text fields for sums, bonus and total.
+        util.specialWidgets(scorePane, width, txfSumSame, txfBonus, txfSumOther, txfTotal);
 
     }
 
     // -------------------------------------------------------------------------
 
-    // Create an action method for btnThrow's action.
-    // Hint: Create small helper methods to be used in the action method.
-    // TODO
+    public void actionThrow() {
+        boolean[] holdStatus = new boolean[cbxHolds.length];
+        for (int i = 0; i < holdStatus.length; i++) {
+            CheckBox box = cbxHolds[i];
+
+            if (box.isSelected()) {
+                holdStatus[i] = true;
+                box.setDisable(true);
+            }
+            else
+                holdStatus[i] = false;
+        }
+
+        dice.throwDice(holdStatus);
+
+        int[] values = dice.getValues();
+        for (int i = 0; i < txfValues.length; i++) {
+            txfValues[i].setText(String.valueOf(values[i]));
+        }
+    }
 
     // -------------------------------------------------------------------------
 
-    // Create a method for mouse click on one of the text fields in txfResults.
-    // Hint: Create small helper methods to be used in the mouse click method.
-    // TODO
+    public void actionResultFields() {
+
+    }
 
 }

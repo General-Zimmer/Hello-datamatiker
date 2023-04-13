@@ -49,7 +49,14 @@ public class YatzyDice {
      * Note: holdStatus[index] is true, if die no. index is hold (for index in [0..4]).
      */
     public void throwDice(boolean[] holdStatus) {
-        // TODO
+
+        for (int i = 0; i < holdStatus.length; i++) {
+            if (holdStatus[i]) continue;
+
+            values[i] = random.nextInt(7);
+
+        }
+
     }
 
     // -------------------------------------------------------------------------
