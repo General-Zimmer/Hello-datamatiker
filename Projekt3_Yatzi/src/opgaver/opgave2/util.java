@@ -1,11 +1,14 @@
 package opgaver.opgave2;
 
+import javafx.geometry.Insets;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import opgaver.opgave1.YatzyDice;
 
 public class util {
-    public static void specialWidgets(GridPane scorePane, int width,  TextField txfSumSame, TextField txfBonus, TextField txfSumOther, TextField txfTotal) {
+    public static void addSpecialWidgets(GridPane scorePane, int width, TextField txfSumSame, TextField txfBonus, TextField txfSumOther, TextField txfTotal) {
         txfSumSame.setPrefWidth(width);
         txfBonus.setPrefWidth(width);
         txfSumOther.setPrefWidth(width);
@@ -21,12 +24,36 @@ public class util {
         scorePane.add(lbBonus, 2, 6);
 
 
-        scorePane.add(txfSumOther, 3, 16);
+        scorePane.add(txfSumOther, 3, 15);
         Label lbSumOther = new Label("Sum");
-        scorePane.add(lbSumOther, 2, 16);
+        scorePane.add(lbSumOther, 2, 15);
 
-        scorePane.add(txfTotal, 3, 17);
+        scorePane.add(txfTotal, 3, 16);
         Label lbTotal = new Label("Total");
-        scorePane.add(lbTotal, 2, 17);
+        scorePane.add(lbTotal, 2, 16);
     }
+
+    public static void addThrowContent(TextField[] txfValues, CheckBox[] cbxHolds, GridPane dicePane, double widgetSize) {
+        for (int i = 0; i < txfValues.length; i++) {
+            // TextFields
+            txfValues[i] = new TextField();
+            TextField txfRef = txfValues[i];
+            txfRef.setPrefSize(widgetSize, widgetSize);
+
+            // Hold buttons
+            cbxHolds[i] = new CheckBox();
+            CheckBox box = cbxHolds[i];
+            box.setPadding(new Insets(0, 0, 0, widgetSize/5));
+            box.setText("hold");
+
+            // Placing widgets
+            dicePane.add(box, i, 1);
+            dicePane.add(txfRef, i, 0);
+        }
+    }
+
+    public static void setThrowText(YatzyDice dice, Label lab) {
+        lab.setText("thrown " + dice.getThrowCount());
+    }
+
 }

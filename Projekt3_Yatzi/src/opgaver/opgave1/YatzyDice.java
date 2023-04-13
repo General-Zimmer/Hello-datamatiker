@@ -40,8 +40,13 @@ public class YatzyDice {
     /**
      * Reset the throw count.
      */
+    @SuppressWarnings("unused")
     public void resetThrowCount() {
-        // TODO
+        throwCount = 0;
+    }
+
+    public void increaseThrowCount() {
+        throwCount++;
     }
 
     /**

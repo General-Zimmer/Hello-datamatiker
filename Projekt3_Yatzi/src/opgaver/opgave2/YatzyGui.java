@@ -14,7 +14,7 @@ import opgaver.opgave1.YatzyDice;
 import java.util.ArrayList;
 
 public class YatzyGui extends Application {
-    private YatzyDice dice = new YatzyDice();
+    private final YatzyDice dice = new YatzyDice();
 
     @Override
     public void start(Stage stage) {
@@ -62,28 +62,15 @@ public class YatzyGui extends Application {
         dicePane.setHgap(10);
         dicePane.setVgap(10);
         dicePane.setStyle("-fx-border-color: black");
-
-        // add txfValues, chbHolds
         double widgetSize = 80;
-        for (int i = 0; i < txfValues.length; i++) {
-            // TextFields
-            txfValues[i] = new TextField();
-            TextField txfRef = txfValues[i];
-            txfRef.setPrefSize(widgetSize, widgetSize);
 
-            // Hold buttons
-            cbxHolds[i] = new CheckBox();
-            CheckBox cbRef = cbxHolds[i];
-            cbRef.setPadding(new Insets(0, 0, 0, widgetSize/5));
-            cbRef.setText("hold");
 
-            // Placing widgets
-            dicePane.add(cbRef, i, 1);
-            dicePane.add(txfRef, i, 0);
-        }
+        // txfValues, chbHolds
+        util.addThrowContent(txfValues, cbxHolds, dicePane, widgetSize);
+
         // lblThrowCount
         dicePane.add(lblThrowCount, 2, 2);
-        lblThrowCount.setText("thrown " + dice.getThrowCount());
+        util.setThrowText(dice, lblThrowCount);
 
         // and btnThrow
         dicePane.add(btnThrow, 3, 2);
@@ -102,17 +89,15 @@ public class YatzyGui extends Application {
         int width = 50; // width of the text fields
 
         // add labels for results
+
         // add txfResults,
         for (int i = 0, j = 0; i < 15; i++, j++) {
-
-
-
 
             txfResults.add(i, new TextField());
             TextField txRef = txfResults.get(i);
             txRef.setPrefWidth(width);
+            txRef.setOnAction(actionEvent -> actionResultFields());
 
-            //todo Add sum, bonus, and total thingies in this
             if (i == 6)
                 j++;
 
@@ -120,14 +105,21 @@ public class YatzyGui extends Application {
         }
 
         // labels and text fields for sums, bonus and total.
-        util.specialWidgets(scorePane, width, txfSumSame, txfBonus, txfSumOther, txfTotal);
+        util.addSpecialWidgets(scorePane, width, txfSumSame, txfBonus, txfSumOther, txfTotal);
 
     }
 
     // -------------------------------------------------------------------------
 
     public void actionThrow() {
+
+        // keep track of throws
+        dice.increaseThrowCount();
+        util.setThrowText(dice, lblThrowCount);
+
+        // Generate Hold status
         boolean[] holdStatus = new boolean[cbxHolds.length];
+
         for (int i = 0; i < holdStatus.length; i++) {
             CheckBox box = cbxHolds[i];
 
@@ -138,18 +130,25 @@ public class YatzyGui extends Application {
             else
                 holdStatus[i] = false;
         }
-
         dice.throwDice(holdStatus);
 
+        // Generate throw
         int[] values = dice.getValues();
         for (int i = 0; i < txfValues.length; i++) {
             txfValues[i].setText(String.valueOf(values[i]));
+        }
+
+        // Calculate scores
+        int[] results = dice.getResults();
+        for (int i = 0; i < results.length; i++) {
+            txfResults.get(i).setText(String.valueOf(results[i]));
         }
     }
 
     // -------------------------------------------------------------------------
 
     public void actionResultFields() {
+
 
     }
 
