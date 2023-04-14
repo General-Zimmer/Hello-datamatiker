@@ -53,6 +53,9 @@ public class YatzyGui extends Application {
     private final Label lblThrowCount = new Label();
     private final String throwText = "thrown ";
     private final Button btnThrow = new Button(" Throw ");
+    private final Background bg = new Background(new BackgroundFill(
+            Paint.valueOf("#00BCE3"), CornerRadii.EMPTY, Insets.EMPTY)
+    );
 
     private final ArrayList<String> namesOfResults = new ArrayList<>(List.of("1s", "2s", "3s", "4s", "5s", "6s",
             "One Pair", "Two Pairs", "Three-same", "Four-same", "Full House", "Small Straight",
@@ -110,6 +113,7 @@ public class YatzyGui extends Application {
             txRef.setPrefWidth(width);
             txRef.setOnMouseClicked(this::actionResultFields);
 
+
             if (i == 6)
                 j++;
 
@@ -124,9 +128,6 @@ public class YatzyGui extends Application {
     // -------------------------------------------------------------------------
 
     public void actionThrow() {
-
-        if (dice.getThrowCount() >= 3) return;
-
         // Generate Hold status
         boolean[] holdStatus = new boolean[cbxHolds.length];
 
@@ -136,10 +137,19 @@ public class YatzyGui extends Application {
             if (box.isSelected() && dice.getThrowCount() != 0) {
                 holdStatus[i] = true;
                 box.setDisable(true);
-            }
-            else
+            } else if (dice.getThrowCount() == 2) {
+                box.setDisable(true);
+                box.setSelected(true);
+                btnThrow.setDisable(true);
+            } else if (dice.getThrowCount() == 0) {
+                box.setDisable(false);
+                box.setSelected(false);
+            } else
                 holdStatus[i] = false;
         }
+
+        if (dice.getThrowCount() >= 3) return;
+
         dice.throwDice(holdStatus);
 
         // Generate throw
@@ -149,10 +159,7 @@ public class YatzyGui extends Application {
         }
 
         // Calculate scores
-        int[] results = dice.getResults();
-        for (int i = 0; i < results.length; i++) {
-            txfResults.get(i).setText(String.valueOf(results[i]));
-        }
+        util.calculateScores(dice, txfResults, bg);
 
         // keep track of throws
         dice.increaseThrowCount();
@@ -163,13 +170,7 @@ public class YatzyGui extends Application {
     // -------------------------------------------------------------------------
 
     public void actionResultFields(MouseEvent e) {
-
-
-
         btnThrow.requestFocus();
-        Background bg = new Background(new BackgroundFill(
-                Paint.valueOf("#FFFF00"), CornerRadii.EMPTY, Insets.EMPTY)
-        );
 
         TextField txRef;
 
@@ -186,18 +187,12 @@ public class YatzyGui extends Application {
 
         txRef.setBackground(bg);
 
-        int ID = -1;
-        for (int i = 0; i < txfResults.size(); i++) {
-            if (txRef.equals(txfResults.get(i)) && !txRef.getBackground().equals(bg))
-                ID = i;
-        }
 
-        int[] results = dice.getResults();
         // sum up same faces
         int sumSame = 0;
         for (int i = 0; i < 6; i++) {
             if (txfResults.get(i).getBackground().equals(bg))
-                sumSame += results[i];
+                sumSame += Integer.parseInt(txfResults.get(i).getText());
         }
         txfSumSame.setText(String.valueOf(sumSame));
 
@@ -205,7 +200,7 @@ public class YatzyGui extends Application {
         int sumOther = 0;
         for (int i = 6; i < 15; i++) {
             if (txfResults.get(i).getBackground().equals(bg))
-                sumOther += results[i];
+                sumOther += Integer.parseInt(txfResults.get(i).getText());
         }
         txfSumOther.setText(String.valueOf(sumOther));
 
@@ -216,8 +211,13 @@ public class YatzyGui extends Application {
         // sum up sums for totals
         txfTotal.setText(String.valueOf(sumSame+sumOther));
 
+        // reset things
         dice.resetThrowCount(txfValues, lblThrowCount);
         util.setThrowText(dice, lblThrowCount, throwText);
+
+        util.calculateScores(dice, txfResults, bg);
+
+        btnThrow.setDisable(false);
 
     }
 

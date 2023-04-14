@@ -4,6 +4,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import opgaver.opgave1.YatzyDice;
 
@@ -78,6 +79,15 @@ public class util {
 
     public static void setThrowText(YatzyDice dice, Label lab, String throwText) {
         lab.setText(throwText + dice.getThrowCount());
+    }
+
+    public static void calculateScores(YatzyDice dice, ArrayList<TextField> txfResults, Background bg) {
+        int[] results = dice.getResults();
+        for (int i = 0; i < results.length; i++) {
+            TextField tx = txfResults.get(i);
+            if (!tx.getBackground().equals(bg))
+                tx.setText(String.valueOf(results[i]));
+        }
     }
 
 }
