@@ -1,5 +1,8 @@
 package opgaver.opgave1;
 
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+
 import java.util.Random;
 
 public class YatzyDice {
@@ -40,9 +43,14 @@ public class YatzyDice {
     /**
      * Reset the throw count.
      */
-    @SuppressWarnings("unused")
-    public void resetThrowCount() {
+    public void resetThrowCount(TextField[] txfValues, Label lblThrowCount) {
         throwCount = 0;
+
+        for (int i = 0; i < values.length; i++) {
+            values[i] = 0;
+            txfValues[i].setText(String.valueOf(values[i]));
+        }
+
     }
 
     public void increaseThrowCount() {

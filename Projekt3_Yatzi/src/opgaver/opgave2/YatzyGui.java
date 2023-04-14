@@ -7,11 +7,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import opgaver.opgave1.YatzyDice;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class YatzyGui extends Application {
     private final YatzyDice dice = new YatzyDice();
@@ -45,7 +51,12 @@ public class YatzyGui extends Application {
     private final TextField txfTotal = new TextField();
 
     private final Label lblThrowCount = new Label();
+    private final String throwText = "thrown ";
     private final Button btnThrow = new Button(" Throw ");
+
+    private final ArrayList<String> namesOfResults = new ArrayList<>(List.of("1s", "2s", "3s", "4s", "5s", "6s",
+            "One Pair", "Two Pairs", "Three-same", "Four-same", "Full House", "Small Straight",
+            "Large Straight", "Chance", "Yatzy"));
 
     private void initContent(GridPane pane) {
         pane.setGridLinesVisible(false);
@@ -70,7 +81,7 @@ public class YatzyGui extends Application {
 
         // lblThrowCount
         dicePane.add(lblThrowCount, 2, 2);
-        util.setThrowText(dice, lblThrowCount);
+        util.setThrowText(dice, lblThrowCount, throwText);
 
         // and btnThrow
         dicePane.add(btnThrow, 3, 2);
@@ -89,6 +100,7 @@ public class YatzyGui extends Application {
         int width = 50; // width of the text fields
 
         // add labels for results
+        util.scoreLabels(scorePane, namesOfResults, width);
 
         // add txfResults,
         for (int i = 0, j = 0; i < 15; i++, j++) {
@@ -96,12 +108,12 @@ public class YatzyGui extends Application {
             txfResults.add(i, new TextField());
             TextField txRef = txfResults.get(i);
             txRef.setPrefWidth(width);
-            txRef.setOnAction(actionEvent -> actionResultFields());
+            txRef.setOnMouseClicked(this::actionResultFields);
 
             if (i == 6)
                 j++;
 
-            scorePane.add(txRef, 0, j);
+            scorePane.add(txRef, 1, j);
         }
 
         // labels and text fields for sums, bonus and total.
@@ -113,9 +125,7 @@ public class YatzyGui extends Application {
 
     public void actionThrow() {
 
-        // keep track of throws
-        dice.increaseThrowCount();
-        util.setThrowText(dice, lblThrowCount);
+        if (dice.getThrowCount() >= 3) return;
 
         // Generate Hold status
         boolean[] holdStatus = new boolean[cbxHolds.length];
@@ -123,7 +133,7 @@ public class YatzyGui extends Application {
         for (int i = 0; i < holdStatus.length; i++) {
             CheckBox box = cbxHolds[i];
 
-            if (box.isSelected()) {
+            if (box.isSelected() && dice.getThrowCount() != 0) {
                 holdStatus[i] = true;
                 box.setDisable(true);
             }
@@ -143,12 +153,71 @@ public class YatzyGui extends Application {
         for (int i = 0; i < results.length; i++) {
             txfResults.get(i).setText(String.valueOf(results[i]));
         }
+
+        // keep track of throws
+        dice.increaseThrowCount();
+        util.setThrowText(dice, lblThrowCount, throwText);
+
     }
 
     // -------------------------------------------------------------------------
 
-    public void actionResultFields() {
+    public void actionResultFields(MouseEvent e) {
 
+
+
+        btnThrow.requestFocus();
+        Background bg = new Background(new BackgroundFill(
+                Paint.valueOf("#FFFF00"), CornerRadii.EMPTY, Insets.EMPTY)
+        );
+
+        TextField txRef;
+
+        if (e.getSource() instanceof TextField)
+            txRef = (TextField) e.getSource();
+        else {
+            System.out.println("ActionResult wasn't a TextField");
+            return;
+        }
+
+        if (dice.getThrowCount() < 1 || txRef.getBackground().equals(bg))
+            return;
+
+
+        txRef.setBackground(bg);
+
+        int ID = -1;
+        for (int i = 0; i < txfResults.size(); i++) {
+            if (txRef.equals(txfResults.get(i)) && !txRef.getBackground().equals(bg))
+                ID = i;
+        }
+
+        int[] results = dice.getResults();
+        // sum up same faces
+        int sumSame = 0;
+        for (int i = 0; i < 6; i++) {
+            if (txfResults.get(i).getBackground().equals(bg))
+                sumSame += results[i];
+        }
+        txfSumSame.setText(String.valueOf(sumSame));
+
+        // sum up other faces
+        int sumOther = 0;
+        for (int i = 6; i < 15; i++) {
+            if (txfResults.get(i).getBackground().equals(bg))
+                sumOther += results[i];
+        }
+        txfSumOther.setText(String.valueOf(sumOther));
+
+
+        // Figure out if bonus is given
+        txfBonus.setText(String.valueOf((sumSame <= 63) ? 0 : 50));
+
+        // sum up sums for totals
+        txfTotal.setText(String.valueOf(sumSame+sumOther));
+
+        dice.resetThrowCount(txfValues, lblThrowCount);
+        util.setThrowText(dice, lblThrowCount, throwText);
 
     }
 
