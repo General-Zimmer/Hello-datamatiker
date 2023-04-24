@@ -130,7 +130,7 @@ public class YatzyGui extends Application {
     public void actionThrow() {
         // Generate Hold status
         boolean[] holdStatus = new boolean[cbxHolds.length];
-
+        // Zimmer er dum og grim og lugter også lidt
         for (int i = 0; i < holdStatus.length; i++) {
             CheckBox box = cbxHolds[i];
 
