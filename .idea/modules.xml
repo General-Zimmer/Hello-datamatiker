@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Architecture1stSem/Architecture1stSem.iml" filepath="$PROJECT_DIR$/Architecture1stSem/Architecture1stSem.iml" />
       <module fileurl="file://$PROJECT_DIR$/Hello-world.iml" filepath="$PROJECT_DIR$/Hello-world.iml" />
       <module fileurl="file://$PROJECT_DIR$/L00/L00.iml" filepath="$PROJECT_DIR$/L00/L00.iml" />
       <module fileurl="file://$PROJECT_DIR$/L01/L01.iml" filepath="$PROJECT_DIR$/L01/L01.iml" />
