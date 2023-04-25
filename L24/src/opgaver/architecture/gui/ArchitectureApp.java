@@ -18,18 +18,18 @@ public class ArchitectureApp {
         Company sled = Controller.createCompany("SLED", 45);
         Controller.createCompany("Vector", 32);
 
-        Employee bob = Controller.createEmployee("Bob Dole", 210, 8103);
+        Employee bob = Controller.createEmployee("Bob Dole", 210);
         Controller.addEmployeeToCompany(bob, ibm);
 
-        Employee alice = Controller.createEmployee("Alice Schmidt", 250, 1356);
+        Employee alice = Controller.createEmployee("Alice Schmidt", 250);
         Controller.addEmployeeToCompany(alice, ibm);
 
-        Employee george = Controller.createEmployee("George Down", 150, 7432);
+        Employee george = Controller.createEmployee("George Down", 150);
         Controller.addEmployeeToCompany(george, amd);
 
-        Employee rita = Controller.createEmployee("Rita Uphill", 300, 111);
+        Employee rita = Controller.createEmployee("Rita Uphill", 300);
         Controller.addEmployeeToCompany(rita, sled);
 
-        Controller.createEmployee("John Doe", 100, 875);
+        Controller.createEmployee("John Doe", 100);
     }
 }

@@ -1,5 +1,6 @@
 package opgaver.opgave1.controller;
 
+import javafx.collections.ObservableList;
 import opgaver.opgave1.model.*;
 import opgaver.opgave1.storage.Storage;
 
@@ -17,6 +18,23 @@ public class Controller {
     public static Bestilling opretBestillingMedPladser(Forestilling forestilling, Kunde kunde,
                                               LocalDate dato, ArrayList<Plads> pladser) {
 
+        if (forestilling.getStartDato().isAfter(dato) && forestilling.getSlutDato().isBefore(dato)) return null;
+
+        for (Plads plads : pladser) {
+            if (!forestilling.erPladsLedig(plads.getRække(), plads.getNr(), dato))
+                return null;
+        }
+
+        Bestilling bestilling = new Bestilling(dato, forestilling, kunde);
+
+        for (Plads plads : pladser)
+            bestilling.addPlads(plads);
+
+        return bestilling;
+    }
+
+    public static ArrayList<Forestilling> getForestillinger() {
+        return Storage.getForestillinger();
     }
 
     public static Forestilling createForestilling(String navn, LocalDate startDato, LocalDate slutDato) {
@@ -31,5 +49,12 @@ public class Controller {
         return plads;
     }
 
+    public static ArrayList<Kunde> getKunder() {
+        return Storage.getKunder();
+    }
+
+    public static ArrayList<Plads> getPladser() {
+        return Storage.getPladser();
+    }
 
 }

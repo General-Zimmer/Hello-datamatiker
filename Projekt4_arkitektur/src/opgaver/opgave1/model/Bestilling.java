@@ -14,4 +14,32 @@ public class Bestilling {
         this.forestilling = forestilling;
         this.kunde = kunde;
     }
+
+
+    public void addPlads(Plads plads) {
+        pladser.add(plads);
+    }
+    public LocalDate getDato() {
+        return dato;
+    }
+
+    public Forestilling getForestilling() {
+        return forestilling;
+    }
+
+    public Kunde getKunde() {
+        return kunde;
+    }
+
+    public void setDato(LocalDate dato) {
+        this.dato = dato;
+    }
+
+    public void setKunde(Kunde kunde) {
+        this.kunde = kunde;
+    }
+
+    public ArrayList<Plads> getPladser() {
+        return pladser;
+    }
 }

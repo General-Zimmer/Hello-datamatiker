@@ -24,8 +24,6 @@ public class hexagon extends Application {
         double size = 150;
         double startx = 200;
         double starty = 400;
-        double offset = 2;
-        double circleReduction = 3;
 
 
         pane.getChildren().add(myPolygon(startx, starty, size));

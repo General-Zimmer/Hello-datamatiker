@@ -12,8 +12,13 @@ public class Kunde {
         this.mobil = mobil;
     }
 
+
     @Override
     public String toString() {
+        return  navn +  " (" + mobil + ")";
+    }
+
+    public String toStringv2() {
         return "Kunde{" +
                 "navn='" + navn + '\'' +
                 ", mobil='" + mobil + '\'' +

@@ -1,5 +1,7 @@
 package opgaver.opgave1.gui;
 
+import javafx.application.Application;
+import javafx.stage.Stage;
 import opgaver.opgave1.controller.Controller;
 import opgaver.opgave1.model.Forestilling;
 import opgaver.opgave1.model.Kunde;
@@ -14,6 +16,7 @@ public class App {
     public static void main(String[] args) {
         initStorage();
         testPrint();
+        Application.launch(Gui.class);
     }
 
     public static void initStorage() {
@@ -59,15 +62,15 @@ public class App {
         ArrayList<Forestilling> forestillinger = Storage.getForestillinger();
         System.out.println("Forestillinger:");
         System.out.println("------------------------------");
-        for (int i = 0; i < forestillinger.size(); i++) {
-            System.out.println(forestillinger.get(i));
+        for (Forestilling forestilling : forestillinger) {
+            System.out.println(forestilling);
         }
         System.out.println("------------------------------");
         System.out.println("Kunder:");
         System.out.println("------------------------------");
         ArrayList<Kunde> kunder = Storage.getKunder();
-        for (int i = 0; i < kunder.size(); i++) {
-            System.out.println(kunder.get(i));
+        for (Kunde kunde : kunder) {
+            System.out.println(kunde);
         }
         System.out.println("------------------------------");
         System.out.println("Pladser:");
