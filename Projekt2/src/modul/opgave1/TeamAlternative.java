@@ -47,14 +47,9 @@ public class TeamAlternative {
                     isStudentRemoved = true;
                 }
             }
-
             catch (ArrayIndexOutOfBoundsException e) {
                 System.out.println("Student '" + name + "' isn't in this team");
-
             }
-
-
-
 
         }
         if (!isStudentRemoved) {
