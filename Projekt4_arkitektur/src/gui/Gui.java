@@ -17,7 +17,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Gui extends Application {
 
@@ -209,11 +208,6 @@ public class Gui extends Application {
             pladsertxt.append(Controller.samletPris(bestilling));
             success.setContentText(pladsertxt.toString());
             success.show();
-
-
-            for (Forestilling forestilling1 : Controller.getForestillinger()) {
-                System.out.println(forestilling1.getBestillinger());
-            }
 
         }
         else {
