@@ -1,8 +1,8 @@
-package opgaver.opgave1.storage;
+package storage;
 
-import opgaver.opgave1.model.Forestilling;
-import opgaver.opgave1.model.Kunde;
-import opgaver.opgave1.model.Plads;
+import model.Forestilling;
+import model.Kunde;
+import model.Plads;
 
 import java.util.ArrayList;
 

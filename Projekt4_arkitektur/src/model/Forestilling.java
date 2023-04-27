@@ -1,11 +1,12 @@
-package opgaver.opgave1.model;
+package model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+@SuppressWarnings("unused")
 public class Forestilling {
-    private String navn;
-    private LocalDate startDato;
+    private final String navn;
+    private final LocalDate startDato;
     private LocalDate slutDato;
     private final ArrayList<Bestilling> bestillinger = new ArrayList<>();
 
@@ -53,7 +54,7 @@ public class Forestilling {
                 for (int j = 0; erPladsLedig && j < pladser.size(); j++) {
                     Plads plads = bestilling.getPladser().get(i);
 
-                    if (plads.getNr() == nr && plads.getRække() == række)
+                    if (plads.nr() == nr && plads.række() == række)
                         erPladsLedig = false;
                 }
             }
@@ -65,6 +66,10 @@ public class Forestilling {
         if (bestilling != null)
             bestillinger.add(bestilling);
         return bestilling;
+    }
+
+    public void setSlutDato(LocalDate slutDato) {
+        this.slutDato = slutDato;
     }
 
     public String getNavn() {

@@ -1,4 +1,4 @@
-package opgaver.opgave1.util;
+package util;
 
 import javafx.scene.control.Alert;
 

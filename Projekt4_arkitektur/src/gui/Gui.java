@@ -1,17 +1,17 @@
-package opgaver.opgave1.gui;
+package gui;
 
+import controller.Controller;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import opgaver.opgave1.controller.Controller;
-import opgaver.opgave1.model.Bestilling;
-import opgaver.opgave1.model.Forestilling;
-import opgaver.opgave1.model.Kunde;
-import opgaver.opgave1.model.Plads;
-import opgaver.opgave1.util.Util;
+import model.Bestilling;
+import model.Forestilling;
+import model.Kunde;
+import model.Plads;
+import util.Util;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

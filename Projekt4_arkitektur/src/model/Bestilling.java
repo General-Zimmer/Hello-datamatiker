@@ -1,8 +1,9 @@
-package opgaver.opgave1.model;
+package model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+@SuppressWarnings("unused")
 public class Bestilling {
     private LocalDate dato;
     private final Forestilling forestilling;
@@ -19,7 +20,7 @@ public class Bestilling {
 
         double pris = 0;
         for (Plads plads : pladser)
-            pris += plads.getPris();
+            pris += plads.pris();
 
         return pris;
     }

@@ -1,7 +1,7 @@
-package opgaver.opgave1.controller;
+package controller;
 
-import opgaver.opgave1.model.*;
-import opgaver.opgave1.storage.Storage;
+import model.*;
+import storage.Storage;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ public class Controller {
     }
 
     public static Bestilling opretBestillingMedPladser(Forestilling forestilling, Kunde kunde,
-                                              LocalDate dato, ArrayList<Plads> pladser) {
+                                                       LocalDate dato, ArrayList<Plads> pladser) {
 
         LocalDate slutDato = forestilling.getSlutDato();
         LocalDate startDato = forestilling.getStartDato();
@@ -25,7 +25,7 @@ public class Controller {
         if (dato.isAfter(startDato) && dato.isBefore(slutDato)) {
             boolean isPladserTaken = false;
             for (Plads plads : pladser) {
-                if (!forestilling.erPladsLedig(plads.getRække(), plads.getNr(), dato))
+                if (!forestilling.erPladsLedig(plads.række(), plads.nr(), dato))
                     isPladserTaken = true;
             }
 
@@ -36,6 +36,8 @@ public class Controller {
                     bestilling.addPlads(plads);
             }
         }
+        if (bestilling != null)
+            kunde.addBestilling(bestilling);
         return forestilling.addBestilling(bestilling);
     }
 

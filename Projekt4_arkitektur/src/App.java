@@ -1,9 +1,8 @@
-package opgaver.opgave1.gui;
-
+import controller.Controller;
+import gui.Gui;
 import javafx.application.Application;
-import opgaver.opgave1.controller.Controller;
-import opgaver.opgave1.model.*;
-import opgaver.opgave1.storage.Storage;
+import model.*;
+import storage.Storage;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -30,16 +29,16 @@ public class App {
         // Sætter test op
         // Mads
         ArrayList<Plads> madsPladser = new ArrayList<>(Controller.getPladser().subList(100, 101));
-        Bestilling madsBestilling = Controller.opretBestillingMedPladser(chess, mads, date.plusDays(1), madsPladser);
+        Controller.opretBestillingMedPladser(chess, mads, date.plusDays(1), madsPladser); // (2023, 8, 22)
 
         // peter
         ArrayList<Plads> peterPladser = new ArrayList<>(Controller.getPladser().subList(102, 104));
-        Bestilling peterBestilling = Controller.opretBestillingMedPladser(chess, peter, date.plusDays(3), peterPladser);
+        Controller.opretBestillingMedPladser(chess, peter, date.plusDays(3), peterPladser); // (2023, 8, 24)
 
 
         // Anders
         ArrayList<Plads> andersPladser = new ArrayList<>(Controller.getPladser().subList(105, 110));
-        Bestilling AndersBestilling = Controller.opretBestillingMedPladser(chess, anders, date.plusDays(2), andersPladser);
+        Controller.opretBestillingMedPladser(chess, anders, date.plusDays(2), andersPladser); // (2023, 8, 23)
 
         testPrint();
 
@@ -48,9 +47,9 @@ public class App {
         System.out.println("Dagen med de fleste pladser i Chess forestillingen er: " + success);
 
         System.out.println("------------------------------");
-        System.out.println("Pladser som Mads har bestilt:");
+        System.out.println("Pladser som Anders har bestilt:");
         System.out.println("------------------------------");
-        for (Plads plads : anders.bestiltePladserTilForestillingPådag(chess, date.plusDays(2)))
+        for (Plads plads : Controller.bestiltePladserTilForestillingPådag(anders, chess, date.plusDays(2)))
             System.out.print(plads.toStringv2() + "\n");
 
     }
@@ -59,31 +58,28 @@ public class App {
         ArrayList<Forestilling> forestillinger = Controller.getForestillinger();
         System.out.println("Forestillinger:");
         System.out.println("------------------------------");
-        for (Forestilling forestilling : forestillinger) {
+        for (Forestilling forestilling : forestillinger)
             System.out.println(forestilling.toStringv2());
-        }
+
         System.out.println("------------------------------");
         System.out.println("Kunder:");
         System.out.println("------------------------------");
         ArrayList<Kunde> kunder = Storage.getKunder();
-        for (Kunde kunde : kunder) {
+        for (Kunde kunde : kunder)
             System.out.println(kunde.toStringv2());
-        }
+
         System.out.println("------------------------------");
         System.out.println("Pladser:");
         System.out.println("------------------------------");
         ArrayList<Plads> pladser = Storage.getPladser();
 
 
-
         for (Plads plads : pladser) {
-            if (plads.getNr() == 20) {
-                System.out.printf(plads.toStringv2() + "%3s" , " ");
-                System.out.println();
-            } else {
-                System.out.printf(plads.toStringv2() + "%3s", " ");
-            }
 
+            System.out.printf(plads.toStringv2() + "%3s", " ");
+            if (plads.nr() == 20) {
+                System.out.println();
+            }
         }
         System.out.println("------------------------------");
     }
