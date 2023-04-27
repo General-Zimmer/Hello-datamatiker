@@ -1,7 +1,5 @@
 package opgaver.opgave1.model;
 
-import opgaver.opgave1.storage.Storage;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -17,19 +15,56 @@ public class Forestilling {
         this.slutDato = slutDato;
     }
 
+    public int antalBestiltePladserPåDag(LocalDate dato) {
+        int antalPladser = 0;
+        for (Bestilling bestilling : bestillinger) {
+            LocalDate beDato = bestilling.getDato();
+            if (beDato.isEqual(dato))
+                antalPladser += bestilling.getPladser().size();
+        }
+        return antalPladser;
+    }
+
+    public LocalDate succesDato() {
+        int billetMax = 0;
+        LocalDate maxDato = startDato;
+        for (LocalDate dato = startDato;
+             !dato.isAfter(slutDato);
+             dato = dato.plusDays(1)) {
+            if (antalBestiltePladserPåDag(dato) > billetMax) {
+                billetMax = antalBestiltePladserPåDag(dato);
+                maxDato = dato;
+            }
+        }
+        return maxDato;
+    }
 
     public boolean erPladsLedig(int række,int nr, LocalDate dato) {
 
-        for (Bestilling bestilling : bestillinger)  {
+        boolean erPladsLedig = true;
 
-            if (bestilling.getDato().isEqual(dato))
-                for (Plads plads : bestilling.getPladser())
+        for (int i = 0; erPladsLedig && i < bestillinger.size(); i++) {
+            Bestilling bestilling = bestillinger.get(i);
+
+
+            if (bestilling.getDato().isEqual(dato)) {
+                ArrayList<Plads> pladser = bestilling.getPladser();
+
+                for (int j = 0; erPladsLedig && j < pladser.size(); j++) {
+                    Plads plads = bestilling.getPladser().get(i);
+
                     if (plads.getNr() == nr && plads.getRække() == række)
-                        return false;
-
+                        erPladsLedig = false;
+                }
+            }
         }
+        return erPladsLedig;
+    }
 
-        return true;
+    public Bestilling addBestilling(Bestilling bestilling) {
+        if (bestilling != null)
+            bestillinger.add(bestilling);
+        return bestilling;
     }
 
     public String getNavn() {

@@ -1,5 +1,6 @@
 package opgaver.opgave1.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Kunde {
@@ -12,6 +13,14 @@ public class Kunde {
         this.mobil = mobil;
     }
 
+    public ArrayList<Plads> bestiltePladserTilForestillingPådag(Forestilling forestilling, LocalDate dato) {
+        ArrayList<Plads> pladser = new ArrayList<>();
+        for (Bestilling bestilling : forestilling.getBestillinger()) {
+            if (bestilling.getDato().isEqual(dato) && bestilling.getKunde().equals(this) && forestilling.equals(bestilling.getForestilling()))
+                pladser.addAll(bestilling.getPladser());
+        }
+        return pladser;
+    }
 
     @Override
     public String toString() {
