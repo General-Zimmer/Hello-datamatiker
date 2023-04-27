@@ -1,21 +1,22 @@
 package opgaver.opgave1.gui;
 
-import javafx.collections.ObservableList;
-import opgaver.opgave1.controller.Controller;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import opgaver.opgave1.model.*;
+import opgaver.opgave1.controller.Controller;
+import opgaver.opgave1.model.Bestilling;
+import opgaver.opgave1.model.Forestilling;
+import opgaver.opgave1.model.Kunde;
+import opgaver.opgave1.model.Plads;
 import opgaver.opgave1.util.Util;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Gui extends Application {
 
@@ -95,13 +96,13 @@ public class Gui extends Application {
         Label lblPladsDato = new Label("Dato");
         pane.add(lblPladsDato, 6, 2);
         pane.add(txfPladsDato, 7, 2);
+        txfPladsDato.setPromptText("DD/MM/YYYY");
 
         // Tilføjer Opret kunde Knap
         pane.add(btnOpretKunde, 4, 4);
 
         pane.add(btnOpretBestilling, 7, 3);
 
-        this.initItems();
         lvwForestillinger.getItems().setAll(Controller.getForestillinger());
         lvwKunder.getItems().setAll(Controller.getKunder());
         lvwPladser.getItems().setAll(Controller.getPladser());
@@ -110,17 +111,6 @@ public class Gui extends Application {
         btnOpretKunde.setOnAction(event -> this.opretKundeOnAction());
         btnOpretForestilling.setOnAction(event -> this.opretForestillingOnAction());
         btnOpretBestilling.setOnAction(event -> this.opretBestillingOnAction());
-    }
-
-    public void initItems() {
-        Controller.createForestilling("Evita", LocalDate.of(2023, 8, 10), LocalDate.of(2023, 8, 20));
-        Controller.createForestilling("Lykke Per", LocalDate.of(2023, 9, 1), LocalDate.of(2023, 9, 10));
-        Controller.createForestilling("Chess", LocalDate.of(2023, 8, 21), LocalDate.of(2023, 8, 30));
-
-        Controller.createKunde("Anders", "11223344");
-        Controller.createKunde("Peter Jensen", "12345678");
-        Controller.createKunde("Niels Madsen", "12341234");
-
     }
 
     public void opretForestillingOnAction() {
@@ -197,7 +187,7 @@ public class Gui extends Application {
         if (lvwForestillinger.getSelectionModel().getSelectedItems().isEmpty()
                 || lvwKunder.getSelectionModel().getSelectedItems().isEmpty()
                 || lvwPladser.getSelectionModel().getSelectedItems().isEmpty()) {
-            alert.setTitle("Opret Bestilling");
+            alert.setTitle(title);
             alert.setHeaderText("Du mangler at vælge et felt");
             alert.setContentText("Et eller flere felter er ikke markeret");
             alert.show();
@@ -213,9 +203,9 @@ public class Gui extends Application {
             StringBuilder pladsertxt = new StringBuilder();
             success.setTitle("Din bestilling er oprettet!");
             success.setHeaderText("Du har reserveret følgende pladser:");
-            for (int i = 0; i < bestilling.getPladser().size(); i++) {
+            for (int i = 0; i < bestilling.getPladser().size(); i++)
                 pladsertxt.append(bestilling.getPladser().get(i)).append("\n");
-            }
+            pladsertxt.append(Controller.samletPris(bestilling));
             success.setContentText(pladsertxt.toString());
             success.show();
 
@@ -224,6 +214,12 @@ public class Gui extends Application {
                 System.out.println(forestilling1.getBestillinger());
             }
 
+        }
+        else {
+            alert.setTitle(title);
+            alert.setHeaderText("Pladsen er allerede bestilt");
+            alert.setContentText("Pladsen er bestilt, bestilt venligst en anden plads");
+            alert.show();
         }
     }
 }

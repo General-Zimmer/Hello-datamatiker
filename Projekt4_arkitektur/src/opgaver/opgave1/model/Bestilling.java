@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Bestilling {
     private LocalDate dato;
     private final Forestilling forestilling;
-    private Kunde kunde;
+    private Kunde kunde; // not nullable
     private final ArrayList<Plads> pladser = new ArrayList<>();
 
     public Bestilling(LocalDate dato, Forestilling forestilling, Kunde kunde) {
@@ -15,6 +15,14 @@ public class Bestilling {
         this.kunde = kunde;
     }
 
+    public double samletPris() {
+
+        double pris = 0;
+        for (Plads plads : pladser)
+            pris += plads.getPris();
+
+        return pris;
+    }
 
     public void addPlads(Plads plads) {
         pladser.add(plads);
@@ -40,6 +48,6 @@ public class Bestilling {
     }
 
     public ArrayList<Plads> getPladser() {
-        return pladser;
+        return new ArrayList<>(pladser);
     }
 }

@@ -1,6 +1,5 @@
 package opgaver.opgave1.controller;
 
-import javafx.collections.ObservableList;
 import opgaver.opgave1.model.*;
 import opgaver.opgave1.storage.Storage;
 
@@ -18,19 +17,39 @@ public class Controller {
     public static Bestilling opretBestillingMedPladser(Forestilling forestilling, Kunde kunde,
                                               LocalDate dato, ArrayList<Plads> pladser) {
 
-        if (forestilling.getStartDato().isAfter(dato) && forestilling.getSlutDato().isBefore(dato)) return null;
+        LocalDate slutDato = forestilling.getSlutDato();
+        LocalDate startDato = forestilling.getStartDato();
 
-        for (Plads plads : pladser) {
-            if (!forestilling.erPladsLedig(plads.getRække(), plads.getNr(), dato))
-                return null;
+        Bestilling bestilling = null;
+
+        if (dato.isAfter(startDato) && dato.isBefore(slutDato)) {
+            boolean isPladserTaken = false;
+            for (Plads plads : pladser) {
+                if (!forestilling.erPladsLedig(plads.getRække(), plads.getNr(), dato))
+                    isPladserTaken = true;
+            }
+
+            if (!isPladserTaken) {
+                bestilling = new Bestilling(dato, forestilling, kunde);
+
+                for (Plads plads : pladser)
+                    bestilling.addPlads(plads);
+            }
         }
+        return forestilling.addBestilling(bestilling);
+    }
 
-        Bestilling bestilling = new Bestilling(dato, forestilling, kunde);
 
-        for (Plads plads : pladser)
-            bestilling.addPlads(plads);
+    public static ArrayList<Plads> bestiltePladserTilForestillingPådag(Kunde kunde, Forestilling forestilling, LocalDate dato) {
+        return kunde.bestiltePladserTilForestillingPådag(forestilling, dato);
+    }
 
-        return bestilling;
+    public static double samletPris(Bestilling bestilling) {
+        return bestilling.samletPris();
+    }
+
+    public static LocalDate antalBestiltePladserPåDag(Forestilling forestilling) {
+        return forestilling.succesDato();
     }
 
     public static ArrayList<Forestilling> getForestillinger() {
@@ -43,10 +62,9 @@ public class Controller {
         return forestilling;
     }
 
-    public static Plads createPlads(int række, int nr, int pris, PladsType pladsType) {
+    public static void createPlads(int række, int nr, int pris, PladsType pladsType) {
         Plads plads = new Plads(række, nr, pris, pladsType);
         Storage.getPladser().add(plads);
-        return plads;
     }
 
     public static ArrayList<Kunde> getKunder() {
