@@ -20,7 +20,7 @@ public class Bestilling {
 
         double pris = 0;
         for (Plads plads : pladser)
-            pris += plads.pris();
+            pris += plads.getPris();
 
         return pris;
     }
