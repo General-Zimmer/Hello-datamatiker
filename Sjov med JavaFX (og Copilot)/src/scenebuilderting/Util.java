@@ -4,6 +4,12 @@ import javafx.scene.control.Control;
 import javafx.scene.layout.Pane;
 
 public class Util {
+    /**
+     * Moves a node to a random location on the pane, but not too close to the reference node
+     * @param pane The pane to move the node on
+     * @param moved The node to move
+     * @param reference The node to not move the node too close to
+     */
     public static void moveNode(Pane pane, Control moved, Control reference) {
         double x;
         double y;

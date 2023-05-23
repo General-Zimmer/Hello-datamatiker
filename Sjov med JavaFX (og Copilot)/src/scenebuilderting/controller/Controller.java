@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
 import javafx.scene.layout.AnchorPane;
 import scenebuilderting.Util;
 
@@ -24,6 +23,7 @@ public class Controller {
 
     @FXML
     public void onYeetPress() {
+        // Switch between YEET and UnYEET
         if (theYeet.getText().equals("")) {
             // Move theYeet to another location
             Util.moveNode(funPane, theYeet, yeetButt);
@@ -38,12 +38,14 @@ public class Controller {
     @FXML
     public void onMouseOver() {
 
-        if (movedCount > 19) {
+        // Hide random_button after 20 moves
+        if (movedCount > 19)
             random_button.setVisible(false);
-            return;
-        }
+
+        // Move random_button to another location
         Util.moveNode(funPane, random_button, random_button);
 
+        // Change text
         switch (movedCount) {
             case 0 -> random_button.setText("Aye!");
             case 1 -> random_button.setText("You almost touched me");
