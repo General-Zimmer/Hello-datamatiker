@@ -9,7 +9,7 @@ import java.io.File;
 
 public class Util {
     /**
-     * Moves a node to a random location on the pane, but not too close to the reference node
+     * Moves a node to a random location on the pane, but not inside the reference node or outside the pane
      * @param pane The pane to move the node on
      * @param moved The node to move
      * @param reference The node to not move the node too close to
@@ -38,6 +38,7 @@ public class Util {
                 y < layoutY + height)
                 || x < 0 || y < 0 || x > pane.getWidth()+width || y > pane.getHeight()+height ||
                 x > pane.getWidth()-width || y > pane.getHeight()-height);
+
         moved.setLayoutX(x);
         moved.setLayoutY(y);
         System.out.println("tries " + tries);

@@ -20,8 +20,8 @@ public class Controller {
     private Label theYeet;
     @FXML
     private AnchorPane funPane;
-    private int movedCount = 0;
 
+    private int movedCount = 0;
     private final MediaPlayer crapPlayer;
     private final MediaPlayer screwPlayer;
 
