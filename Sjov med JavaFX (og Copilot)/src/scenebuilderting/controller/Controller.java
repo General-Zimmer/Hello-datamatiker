@@ -7,6 +7,10 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import scenebuilderting.Util;
 
+import javax.sound.sampled.*;
+import java.io.IOException;
+import java.io.InputStream;
+
 public class Controller {
 
     @FXML
@@ -46,7 +50,7 @@ public class Controller {
 
         // Change text
         switch (movedCount) {
-            case 0 -> random_button.setText("Aye!");
+            case 0 -> random_button.setText("Aye! I'm just a button!");
             case 1 -> random_button.setText("You almost touched me");
             case 2 -> random_button.setText("Stop it!");
             case 3 -> random_button.setText("I'm warning you!");
@@ -57,13 +61,18 @@ public class Controller {
             case 8 -> random_button.setText("AHHH");
             case 9 -> random_button.setText("AHHHHHHHH!");
             case 12 -> random_button.setText("AHHHHHHHH, fuck yoooou");
+            case 13 -> random_button.setText("REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEeeeeeeEEEEEEEEEEEEeeEEEEEEEEEEE");
             case 14 -> random_button.setText("Just leave me aloooone!");
             case 15 -> random_button.setText("stop meanie!");
             case 16 -> random_button.setText("Get a life");
-            case 17 -> random_button.setText("And touch grass");
+            case 17 -> random_button.setText("And touch grass (Not me)");
             case 18 -> random_button.setText("You filthy animal!");
             case 19 -> random_button.setText("fuck you, I'm gonna go play Minecraft");
         }
+        if (movedCount == 19) {
+
+        }
+
         movedCount++;
 
         // Update pane so the button size is up to date before move is calculated.
@@ -71,6 +80,8 @@ public class Controller {
 
         // Move random_button to another location
         Util.moveNode(funPane, random_button, random_button);
+
+
     }
 
     @FXML

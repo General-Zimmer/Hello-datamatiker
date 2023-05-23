@@ -19,6 +19,11 @@ public class Util {
         double height = reference.heightProperty().get();
         int tries = 0;
         do {
+            if (tries > 1000) {
+                pane.setLayoutX(width+30);
+                pane.setLayoutY(height+30);
+            }
+
             x = pane.getWidth() * Math.random();
             y = pane.getHeight() * Math.random();
             tries++;
@@ -32,7 +37,7 @@ public class Util {
         moved.setLayoutX(x);
         moved.setLayoutY(y);
         System.out.println("tries " + tries);
-        System.out.println(width + " " + height);
+        System.out.println("width: " + width + " Height: " + height);
         System.out.println(moved.styleProperty());
     }
 }

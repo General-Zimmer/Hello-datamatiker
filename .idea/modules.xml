@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Architecture1stSem/Architecture1stSem.iml" filepath="$PROJECT_DIR$/Architecture1stSem/Architecture1stSem.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Hello-world.iml" filepath="$PROJECT_DIR$/Hello-world.iml" />
       <module fileurl="file://$PROJECT_DIR$/L00 Intro til PRO1/L00 Intro til PRO1.iml" filepath="$PROJECT_DIR$/L00 Intro til PRO1/L00 Intro til PRO1.iml" />
       <module fileurl="file://$PROJECT_DIR$/L01 Java Intro/L01 Java Intro.iml" filepath="$PROJECT_DIR$/L01 Java Intro/L01 Java Intro.iml" />
       <module fileurl="file://$PROJECT_DIR$/L02 variable and Scanner/L02 variable and Scanner.iml" filepath="$PROJECT_DIR$/L02 variable and Scanner/L02 variable and Scanner.iml" />
