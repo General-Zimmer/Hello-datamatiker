@@ -10,8 +10,6 @@ import javafx.scene.media.MediaPlayer;
 import scenebuilderting.Util;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.URISyntaxException;
 
 public class Controller {
 
@@ -27,13 +25,25 @@ public class Controller {
     private AnchorPane funPane;
     private int movedCount = 0;
 
-    MediaPlayer mediaPlayer;
+    private final MediaPlayer crapPlayer;
+    private final MediaPlayer ScrewPlayer;
 
     public Controller() {
-        File file = new File("screw_u.mp3");
-        String filePath = file.toURI().toString().substring(0, file.toURI().toString().length() - 11) + "/Sjov%20med%20JavaFX%20(og%20Copilot)/resources/screw_u.mp3";
-        final Media hit = new Media(filePath);
-        mediaPlayer = new MediaPlayer(hit);
+        // Load the sound files
+        // loud sound for screw_u.mp3
+        String ScrewName = "screw_u.mp3";
+        File file = new File(ScrewName);
+        String filePath = file.toURI().toString().substring(0, file.toURI().toString().length() - ScrewName.length()) + "/Sjov%20med%20JavaFX%20(og%20Copilot)/resources/screw_u.mp3";
+        Media hit = new Media(filePath);
+        ScrewPlayer = new MediaPlayer(hit);
+
+        // loud sound for crab_rave.mp3
+        String CrabName = "crab_rave.mp3";
+        file = new File(CrabName);
+        filePath = file.toURI().toString().substring(0, file.toURI().toString().length() - CrabName.length()) + "/Sjov%20med%20JavaFX%20(og%20Copilot)/resources/crab_rave.mp3";
+        hit = new Media(filePath);
+        crapPlayer = new MediaPlayer(hit);
+
     }
 
     @FXML
@@ -51,7 +61,17 @@ public class Controller {
     }
 
     @FXML
-    public void onMouseOver() throws URISyntaxException, IOException {
+    public void startCrabRave() {
+        crapPlayer.play();
+    }
+
+    @FXML
+    public void stopCrabRave() {
+        crapPlayer.stop();
+    }
+
+    @FXML
+    public void onMouseOver() {
         // Hide random_button after 20 moves
         if (movedCount > 19) {
             random_button.setVisible(false);
@@ -88,7 +108,7 @@ public class Controller {
 
         // play media when
         if (movedCount == 19+1)
-            mediaPlayer.play();
+            ScrewPlayer.play();
 
 
         // Move random_button to another location
