@@ -22,6 +22,7 @@ public class Test {
             Customer tempo = new Customer(fn[i],ln[i]);
             customers.add(tempo);
             badCustomers[i] = tempo;
+
         }
 
         Collections.sort(customers);
@@ -30,8 +31,11 @@ public class Test {
         System.out.println(customers);
         System.out.println(Arrays.toString(badCustomers));
 
+
         ArrayList<Customer> goodCustomers = Util.goodCustomers(customers, badCustomers);
         for (Customer customer : goodCustomers)
             System.out.println(customer);
     }
+
+
 }
