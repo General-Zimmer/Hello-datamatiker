@@ -93,6 +93,7 @@ public class Controller {
         // Update pane so the button size is up to date before move is calculated.
         funPane.snapshot(null, null);
 
+        // todo automatically hide button when player is done
         // play media when
         if (movedCount == 19+1)
             screwPlayer.play();
@@ -100,10 +101,6 @@ public class Controller {
 
         // Move random_button to another location
         Util.moveNode(funPane, random_button, random_button);
-
-
-
-
 
     }
 
