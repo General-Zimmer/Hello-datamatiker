@@ -5,11 +5,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import scenebuilderting.Util;
 
-import javax.sound.sampled.*;
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
+import java.net.URISyntaxException;
 
 public class Controller {
 
@@ -24,6 +26,15 @@ public class Controller {
     @FXML
     private AnchorPane funPane;
     private int movedCount = 0;
+
+    MediaPlayer mediaPlayer;
+
+    public Controller() {
+        File file = new File("screw_u.mp3");
+        String filePath = file.toURI().toString().substring(0, file.toURI().toString().length() - 11) + "/Sjov%20med%20JavaFX%20(og%20Copilot)/resources/screw_u.mp3";
+        final Media hit = new Media(filePath);
+        mediaPlayer = new MediaPlayer(hit);
+    }
 
     @FXML
     public void onYeetPress() {
@@ -40,7 +51,7 @@ public class Controller {
     }
 
     @FXML
-    public void onMouseOver() {
+    public void onMouseOver() throws URISyntaxException, IOException {
         // Hide random_button after 20 moves
         if (movedCount > 19) {
             random_button.setVisible(false);
@@ -67,19 +78,24 @@ public class Controller {
             case 16 -> random_button.setText("Get a life");
             case 17 -> random_button.setText("And touch grass (Not me)");
             case 18 -> random_button.setText("You filthy animal!");
-            case 19 -> random_button.setText("fuck you, I'm gonna go play Minecraft");
+            case 19 -> random_button.setText("screw you, I am gonna go play Mine-craft!");
         }
-        if (movedCount == 19) {
-
-        }
-
         movedCount++;
+
 
         // Update pane so the button size is up to date before move is calculated.
         funPane.snapshot(null, null);
 
+        // play media when
+        if (movedCount == 19+1)
+            mediaPlayer.play();
+
+
         // Move random_button to another location
         Util.moveNode(funPane, random_button, random_button);
+
+
+
 
 
     }
