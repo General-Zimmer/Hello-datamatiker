@@ -2,7 +2,7 @@
 <project version="4">
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="L02" options="--add-exports java.base/java=ALL-UNNAMED" />
+      <module name="L02 variable and Scanner" options="--add-exports java.base/java=ALL-UNNAMED" />
     </option>
   </component>
 </project>

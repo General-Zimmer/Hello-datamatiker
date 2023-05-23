@@ -47,6 +47,7 @@ public class Gui extends Application {
             double tempX = startx+(size*2+offset)*i;
 
             for (int j = 0; j < amount; j++)
+
                 pane.getChildren().add(hexagon(
                         tempX + (size+offset/2) * j,
                         starty - (size+offset)*1.75 * j,
