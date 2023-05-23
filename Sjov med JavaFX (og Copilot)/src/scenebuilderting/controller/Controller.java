@@ -46,6 +46,7 @@ public class Controller {
         }
     }
 
+    //todo add volume slider
     @FXML
     public void startCrabRave() {
         crapPlayer.play();
