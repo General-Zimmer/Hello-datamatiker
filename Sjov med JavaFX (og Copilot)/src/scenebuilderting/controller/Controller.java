@@ -5,11 +5,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import scenebuilderting.Util;
-
-import java.io.File;
 
 public class Controller {
 
@@ -26,23 +23,12 @@ public class Controller {
     private int movedCount = 0;
 
     private final MediaPlayer crapPlayer;
-    private final MediaPlayer ScrewPlayer;
+    private final MediaPlayer screwPlayer;
 
     public Controller() {
         // Load the sound files
-        // loud sound for screw_u.mp3
-        String ScrewName = "screw_u.mp3";
-        File file = new File(ScrewName);
-        String filePath = file.toURI().toString().substring(0, file.toURI().toString().length() - ScrewName.length()) + "/Sjov%20med%20JavaFX%20(og%20Copilot)/resources/screw_u.mp3";
-        Media hit = new Media(filePath);
-        ScrewPlayer = new MediaPlayer(hit);
-
-        // loud sound for crab_rave.mp3
-        String CrabName = "crab_rave.mp3";
-        file = new File(CrabName);
-        filePath = file.toURI().toString().substring(0, file.toURI().toString().length() - CrabName.length()) + "/Sjov%20med%20JavaFX%20(og%20Copilot)/resources/crab_rave.mp3";
-        hit = new Media(filePath);
-        crapPlayer = new MediaPlayer(hit);
+        crapPlayer = Util.getMediaPlayerFromFile("crab_rave.mp3");
+        screwPlayer = Util.getMediaPlayerFromFile("screw_u.mp3");
 
     }
 
@@ -108,7 +94,7 @@ public class Controller {
 
         // play media when
         if (movedCount == 19+1)
-            ScrewPlayer.play();
+            screwPlayer.play();
 
 
         // Move random_button to another location

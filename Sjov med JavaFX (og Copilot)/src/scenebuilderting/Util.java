@@ -2,6 +2,10 @@ package scenebuilderting;
 
 import javafx.scene.control.Control;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
+import java.io.File;
 
 public class Util {
     /**
@@ -39,5 +43,18 @@ public class Util {
         System.out.println("tries " + tries);
         System.out.println("width: " + width + " Height: " + height);
         System.out.println(moved.styleProperty());
+    }
+
+    /**
+     * Gets a MediaPlayer from a file
+     * Note: The file must be in the resource folder otherwise the audio file will never be found.
+     * @param fileName The name of the file to get the MediaPlayer from
+     * @return The MediaPlayer from the file
+     */
+    public static MediaPlayer getMediaPlayerFromFile(String fileName) {
+        File file = new File(fileName);
+        String filePath = file.toURI().toString().substring(0, file.toURI().toString().length() - fileName.length()) + "/Sjov%20med%20JavaFX%20(og%20Copilot)/resources/"+fileName;
+        Media media = new Media(filePath);
+        return new MediaPlayer(media);
     }
 }
