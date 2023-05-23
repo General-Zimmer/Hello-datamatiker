@@ -20,7 +20,6 @@ public class Controller {
     private Label theYeet;
     @FXML
     private AnchorPane funPane;
-
     private int movedCount = 0;
 
     @FXML
