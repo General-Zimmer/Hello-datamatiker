@@ -37,13 +37,12 @@ public class Controller {
 
     @FXML
     public void onMouseOver() {
-
         // Hide random_button after 20 moves
-        if (movedCount > 19)
+        if (movedCount > 19) {
             random_button.setVisible(false);
+            return;
+        }
 
-        // Move random_button to another location
-        Util.moveNode(funPane, random_button, random_button);
 
         // Change text
         switch (movedCount) {
@@ -66,6 +65,12 @@ public class Controller {
             case 19 -> random_button.setText("fuck you, I'm gonna go play Minecraft");
         }
         movedCount++;
+
+        // Update pane so the button size is up to date before move is calculated.
+        funPane.snapshot(null, null);
+
+        // Move random_button to another location
+        Util.moveNode(funPane, random_button, random_button);
     }
 
     @FXML

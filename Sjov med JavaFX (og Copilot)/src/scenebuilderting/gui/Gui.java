@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class Gui extends Application {
     @SuppressWarnings("ConstantConditions")
     @Override
     public void start(Stage stage) throws IOException {

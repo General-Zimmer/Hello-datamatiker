@@ -13,12 +13,26 @@ public class Util {
     public static void moveNode(Pane pane, Control moved, Control reference) {
         double x;
         double y;
+        double layoutX = reference.getLayoutX();
+        double layoutY = reference.getLayoutY();
+        double width = reference.widthProperty().get();
+        double height = reference.heightProperty().get();
+        int tries = 0;
         do {
-            x = pane.getWidth() * Math.random()*0.75;
-            y = pane.getHeight() * Math.random()*0.9;
-        } while (reference.getLayoutX()*0.85 > x && reference.getLayoutX()*1.15 < x &&
-                reference.getLayoutY()*0.90 > y && reference.getLayoutY()*1.1 < y);
+            x = pane.getWidth() * Math.random();
+            y = pane.getHeight() * Math.random();
+            tries++;
+
+        } while ((x > layoutX - width &&
+                x < layoutX + width &&
+                y > layoutY - height &&
+                y < layoutY + height)
+                || x < 0 || y < 0 || x > pane.getWidth()+width || y > pane.getHeight()+height ||
+                x > pane.getWidth()-width || y > pane.getHeight()-height);
         moved.setLayoutX(x);
         moved.setLayoutY(y);
+        System.out.println("tries " + tries);
+        System.out.println(width + " " + height);
+        System.out.println(moved.styleProperty());
     }
 }
