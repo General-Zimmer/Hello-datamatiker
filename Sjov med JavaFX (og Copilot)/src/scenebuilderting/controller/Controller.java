@@ -6,6 +6,7 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import scenebuilderting.Util;
 
 public class Controller {
@@ -20,6 +21,9 @@ public class Controller {
     private Label theYeet;
     @FXML
     private AnchorPane funPane;
+    @FXML
+    private AnchorPane ltt_pane;
+    private MediaView crapWindow;
 
     private int movedCount = 0;
     private final MediaPlayer crapPlayer;
@@ -27,7 +31,7 @@ public class Controller {
 
     public Controller() {
         // Load the sound files
-        crapPlayer = Util.getMediaPlayerFromFile("crab_rave.mp3");
+        crapPlayer = Util.getMediaPlayerFromFile("craps.mp4");
         screwPlayer = Util.getMediaPlayerFromFile("screw_u.mp3");
 
     }
@@ -50,11 +54,25 @@ public class Controller {
     @FXML
     public void startCrabRave() {
         crapPlayer.play();
+        if (crapWindow == null) {
+            crapWindow = new MediaView(crapPlayer);
+            crapWindow.setLayoutX(270);
+            crapWindow.setLayoutY(70);
+            // resize video to fit crapwindow
+            double height = 480;
+            double heightRatio = 0.56338028169;
+            crapWindow.setFitHeight(height);
+            crapWindow.setFitWidth(heightRatio * height);
+            ltt_pane.getChildren().add(crapWindow);
+        } else {
+            crapWindow.setVisible(true);
+        }
     }
 
     @FXML
     public void stopCrabRave() {
         crapPlayer.stop();
+        crapWindow.setVisible(false);
     }
 
     @FXML

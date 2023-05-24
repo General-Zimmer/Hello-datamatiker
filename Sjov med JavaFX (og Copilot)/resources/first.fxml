@@ -58,7 +58,7 @@
           </Tab>
           <Tab text="LTT test bench GUI">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane fx:id="ltt_pane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Button layoutX="68.0" layoutY="63.0" mnemonicParsing="false" onAction="#startCrabRave" text="start sound test" />
                         <Button layoutX="68.0" layoutY="107.0" mnemonicParsing="false" onAction="#stopCrabRave" text="stop sound test" />

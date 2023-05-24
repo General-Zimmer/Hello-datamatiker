@@ -26,6 +26,7 @@ public class Util {
             if (tries > 1000) {
                 pane.setLayoutY(pane.getHeight()+height*0.1);
                 pane.setLayoutX(pane.getWidth()+width*0.3);
+                pane.snapshot(null, null);
                 tries = 0;
             }
 
