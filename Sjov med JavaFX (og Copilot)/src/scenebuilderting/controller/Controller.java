@@ -37,7 +37,7 @@ public class Controller {
         // Switch between YEET and UnYEET
         if (theYeet.getText().equals("")) {
             // Move theYeet to another location
-            Util.moveNode(funPane, theYeet, yeetButt);
+            Util.moveNodeRandom(funPane, theYeet, yeetButt);
             theYeet.setText("YEET");
             yeetButt.setText("UnYEET");
         } else {
@@ -79,7 +79,7 @@ public class Controller {
             case 8 -> random_button.setText("AHHH");
             case 9 -> random_button.setText("AHHHHHHHH!");
             case 12 -> random_button.setText("AHHHHHHHH, fuck yoooou");
-            case 13 -> random_button.setText("REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEeeeeeeEEEEEEEEEEEEeeEEEEEEEEEEE");
+            case 13 -> random_button.setText("REEEEEEEEEEEEEEEEEEEEeeeeeeEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEeeeeeeEEEEEEEEEEEEeeEEEEEEEEEEE");
             case 14 -> random_button.setText("Just leave me aloooone!");
             case 15 -> random_button.setText("stop meanie!");
             case 16 -> random_button.setText("Get a life");
@@ -100,7 +100,7 @@ public class Controller {
 
 
         // Move random_button to another location
-        Util.moveNode(funPane, random_button, random_button);
+        Util.moveNodeRandom(funPane, random_button, random_button);
 
     }
 

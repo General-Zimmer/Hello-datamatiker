@@ -14,7 +14,7 @@ public class Util {
      * @param moved The node to move
      * @param reference The node to not move the node too close to
      */
-    public static void moveNode(Pane pane, Control moved, Control reference) {
+    public static void moveNodeRandom(Pane pane, Control moved, Control reference) {
         double x;
         double y;
         double layoutX = reference.getLayoutX();
@@ -24,8 +24,9 @@ public class Util {
         int tries = 0;
         do {
             if (tries > 1000) {
-                pane.setLayoutX(width+30);
-                pane.setLayoutY(height+30);
+                pane.setLayoutY(pane.getHeight()+height*0.1);
+                pane.setLayoutX(pane.getWidth()+width*0.3);
+                tries = 0;
             }
 
             x = pane.getWidth() * Math.random();
@@ -36,8 +37,8 @@ public class Util {
                 x < layoutX + width &&
                 y > layoutY - height &&
                 y < layoutY + height)
-                || x < 0 || y < 0 || x > pane.getWidth()+width || y > pane.getHeight()+height ||
-                x > pane.getWidth()-width || y > pane.getHeight()-height);
+                || x < 0 || y < 0 ||
+                x+width > pane.getWidth() || y+height > pane.getHeight());
 
         moved.setLayoutX(x);
         moved.setLayoutY(y);
