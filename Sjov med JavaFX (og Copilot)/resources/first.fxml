@@ -39,6 +39,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.media.MediaView?>
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scenebuilderting.controller.Controller">
   <children>
@@ -62,6 +63,7 @@
                      <children>
                         <Button layoutX="68.0" layoutY="63.0" mnemonicParsing="false" onAction="#startCrabRave" text="start sound test" />
                         <Button layoutX="68.0" layoutY="107.0" mnemonicParsing="false" onAction="#stopCrabRave" text="stop sound test" />
+                        <MediaView fx:id="crapWindow" fitHeight="160.0" fitWidth="150.0" layoutX="220.0" layoutY="25.0" />
                      </children></AnchorPane>
             </content>
           </Tab>

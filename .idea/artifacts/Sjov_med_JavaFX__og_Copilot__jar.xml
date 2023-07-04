@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Sjov med JavaFX (og Copilot):jar">
+    <output-path>$USER_HOME$/Downloads</output-path>
+    <root id="archive" name="Sjov med JavaFX (og Copilot)_jar.jar">
+      <element id="module-output" name="Sjov med JavaFX (og Copilot)" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../Java ting/JavaFX/javafx-sdk-17.0.6/lib/javafx-swt.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../Java ting/JavaFX/javafx-sdk-17.0.6/lib/javafx.base.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../Java ting/JavaFX/javafx-sdk-17.0.6/lib/javafx.controls.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../Java ting/JavaFX/javafx-sdk-17.0.6/lib/javafx.fxml.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../Java ting/JavaFX/javafx-sdk-17.0.6/lib/javafx.media.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../Java ting/JavaFX/javafx-sdk-17.0.6/lib/javafx.graphics.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../Java ting/JavaFX/javafx-sdk-17.0.6/lib/javafx.swing.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../Java ting/JavaFX/javafx-sdk-17.0.6/lib/javafx.web.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

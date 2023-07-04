@@ -23,6 +23,7 @@ public class Controller {
     private AnchorPane funPane;
     @FXML
     private AnchorPane ltt_pane;
+    @FXML
     private MediaView crapWindow;
 
     private int movedCount = 0;
@@ -54,16 +55,11 @@ public class Controller {
     @FXML
     public void startCrabRave() {
         crapPlayer.play();
-        if (crapWindow == null) {
-            crapWindow = new MediaView(crapPlayer);
-            crapWindow.setLayoutX(270);
-            crapWindow.setLayoutY(70);
-            // resize video to fit crapwindow
-            double height = 480;
-            double heightRatio = 0.56338028169;
-            crapWindow.setFitHeight(height);
+        if (crapWindow.getMediaPlayer() == null) {
+            crapWindow.setMediaPlayer(crapPlayer);
+            double height = crapWindow.getFitHeight();
+            double heightRatio = 1.775;
             crapWindow.setFitWidth(heightRatio * height);
-            ltt_pane.getChildren().add(crapWindow);
         } else {
             crapWindow.setVisible(true);
         }

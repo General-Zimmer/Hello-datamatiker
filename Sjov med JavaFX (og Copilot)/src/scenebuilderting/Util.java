@@ -46,6 +46,8 @@ public class Util {
         System.out.println("tries " + tries);
         System.out.println("width: " + width + " Height: " + height);
         System.out.println(moved.styleProperty());
+
+
     }
 
     /**
