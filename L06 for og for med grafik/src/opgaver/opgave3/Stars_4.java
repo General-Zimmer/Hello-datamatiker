@@ -20,7 +20,7 @@ public class Stars_4 {
         // Actual content
         for (int row = 1; row <= rowCount; row++) {
             // print row number
-            System.out.printf("%2d: ", row);
+            System.out.printf("%4d: ", row);
 
             // Makes sure star placement is reversed
             if (rowCount/2 == whenStar)
