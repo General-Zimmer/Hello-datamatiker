@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Architecture1stSem/Architecture1stSem.iml" filepath="$PROJECT_DIR$/Architecture1stSem/Architecture1stSem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Hello-Datamatiker.iml" filepath="$PROJECT_DIR$/Hello-Datamatiker.iml" />
       <module fileurl="file://$PROJECT_DIR$/L00 Intro til PRO1/L00 Intro til PRO1.iml" filepath="$PROJECT_DIR$/L00 Intro til PRO1/L00 Intro til PRO1.iml" />
       <module fileurl="file://$PROJECT_DIR$/L01 Java Intro/L01 Java Intro.iml" filepath="$PROJECT_DIR$/L01 Java Intro/L01 Java Intro.iml" />
       <module fileurl="file://$PROJECT_DIR$/L02 variable and Scanner/L02 variable and Scanner.iml" filepath="$PROJECT_DIR$/L02 variable and Scanner/L02 variable and Scanner.iml" />
@@ -31,8 +32,7 @@
       <module fileurl="file://$PROJECT_DIR$/Projekt5_KAS/Projekt5_KAS.iml" filepath="$PROJECT_DIR$/Projekt5_KAS/Projekt5_KAS.iml" />
       <module fileurl="file://$PROJECT_DIR$/Sjov med JavaFX (og Copilot)/Sjov med JavaFX (og Copilot).iml" filepath="$PROJECT_DIR$/Sjov med JavaFX (og Copilot)/Sjov med JavaFX (og Copilot).iml" />
       <module fileurl="file://$PROJECT_DIR$/StudieStartsTest/StudieStartsTest.iml" filepath="$PROJECT_DIR$/StudieStartsTest/StudieStartsTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../foorste semeste proove/foorste semeste proove.iml" filepath="$PROJECT_DIR$/../foorste semeste proove/foorste semeste proove.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../semesteropgave januar 2021/semesteropgave januar 2021.iml" filepath="$PROJECT_DIR$/../semesteropgave januar 2021/semesteropgave januar 2021.iml" />
+      <module fileurl="file://$PROJECT_DIR$/foorste semeste proove/foorste semeste proove.iml" filepath="$PROJECT_DIR$/foorste semeste proove/foorste semeste proove.iml" />
     </modules>
   </component>
 </project>
